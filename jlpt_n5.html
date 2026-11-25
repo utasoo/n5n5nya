@@ -1,0 +1,3059 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌸 JLPT N5 한자 & 단어 마스터 | 귀여운 파스텔 일본어 학습장</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: 둥글둥글하고 귀여운 한국어/일본어 폰트 (Jua, Gowun Dodum, Zen Maru Gothic) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&family=Noto+Sans+JP:wght@500;700;900&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Gowun Dodum"', '"Zen Maru Gothic"', 'sans-serif'],
+            cute: ['"Jua"', '"Zen Maru Gothic"', 'sans-serif'],
+            jp: ['"Zen Maru Gothic"', '"Noto Sans JP"', 'sans-serif'],
+          },
+          colors: {
+            pinkBg: '#FFF4F8',
+            pinkCard: '#FFFFFF',
+            pinkAccent: '#FF6B9D',
+            pinkDeep: '#E8437A',
+            mintCute: '#38BDF8',
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    /* 사랑스러운 파스텔 핑크 폴카 도트 배경 */
+    body {
+      background-color: #FFF3F7;
+      background-image:
+        radial-gradient(#FFD1E3 2.6px, transparent 2.6px),
+        radial-gradient(#FFE3EE 2.6px, #FFF3F7 2.6px);
+      background-size: 36px 36px;
+      background-position: 0 0, 18px 18px;
+      color: #4A2C3A;
+      font-family: 'Gowun Dodum', 'Zen Maru Gothic', sans-serif;
+    }
+
+    .cute-title {
+      font-family: 'Jua', 'Zen Maru Gothic', sans-serif;
+      letter-spacing: 0.01em;
+    }
+
+    .kanji-font {
+      font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+    }
+
+    /* 말랑말랑 입체 핑크 카드 & 버튼 */
+    .cute-card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 2px solid #FFD6E5;
+      border-radius: 28px;
+      box-shadow: 0 8px 24px -6px rgba(255, 118, 168, 0.16);
+    }
+
+    .cute-pill-btn {
+      border-radius: 9999px;
+      transition: all 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .cute-pill-btn:active {
+      transform: scale(0.95);
+    }
+
+    .cute-bouncy-card {
+      border-radius: 24px;
+      transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .cute-bouncy-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px -6px rgba(255, 107, 157, 0.24);
+    }
+
+    /* 쓰기 캔버스 원고지 십자 격자선 배경 (핑크 점선 느낌) */
+    .kanji-grid-bg {
+      background-color: #FFFAFC;
+      background-image:
+        linear-gradient(to right, rgba(255, 173, 204, 0.55) 1.5px, transparent 1.5px),
+        linear-gradient(to bottom, rgba(255, 173, 204, 0.55) 1.5px, transparent 1.5px),
+        linear-gradient(45deg, transparent 49.6%, rgba(255, 209, 227, 0.75) 49.6%, rgba(255, 209, 227, 0.75) 50.4%, transparent 50.4%),
+        linear-gradient(-45deg, transparent 49.6%, rgba(255, 209, 227, 0.75) 49.6%, rgba(255, 209, 227, 0.75) 50.4%, transparent 50.4%);
+      background-size: 50% 50%, 50% 50%, 100% 100%, 100% 100%;
+      background-position: center center;
+    }
+
+    /* 커스텀 핑크 스크롤바 */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FFF0F5;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #FFB6D0;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #FF85B3;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.92); opacity: 0; }
+      70% { transform: scale(1.02); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .animate-pop {
+      animation: popIn 0.26s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-pink-200 selection:text-pink-900">
+
+  <!-- 상단 헤더 & 진도율 바 -->
+  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b-2 border-pink-200/80 shadow-sm shadow-pink-100/60">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <!-- 브랜드 로고 -->
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3 cursor-pointer group" onclick="switchTab('list')">
+            <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-pink-400 via-rose-400 to-pink-500 text-white flex items-center justify-center font-jp font-black text-2xl shadow-md shadow-pink-200 border-2 border-white group-hover:rotate-6 transition-transform">
+              漢
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h1 class="cute-title text-xl sm:text-2xl text-pink-950">JLPT N5 한자·단어 마스터</h1>
+                <span class="px-2.5 py-0.5 text-[11px] font-bold bg-pink-100 text-pink-600 rounded-full border border-pink-200">🌸 96자</span>
+              </div>
+              <p class="text-xs text-pink-700/75 font-medium">암기 · 단어장 · 쓰기연습 · 퀴즈 · 똑똑한 자동채점</p>
+            </div>
+          </div>
+
+          <!-- 모바일 진도 요약 뱃지 -->
+          <div class="sm:hidden flex items-center gap-1.5 bg-pink-100/80 px-3 py-1 rounded-full border border-pink-200">
+            <span class="text-xs font-extrabold text-pink-700" id="mobileProgressText">0/96</span>
+          </div>
+        </div>
+
+        <!-- 전체 학습 진도율 게이지 -->
+        <div class="flex items-center gap-3 bg-pink-50/90 px-4 py-2 rounded-full border-2 border-pink-200/80">
+          <div class="flex flex-col min-w-[145px] sm:min-w-[185px]">
+            <div class="flex justify-between items-center text-xs mb-1">
+              <span class="font-bold text-pink-800">🍓 암기 달성률</span>
+              <span class="font-extrabold text-pink-600" id="progressStatText">0 / 96자 (0%)</span>
+            </div>
+            <div class="w-full h-2.5 bg-white rounded-full overflow-hidden border border-pink-200/70 p-0.5">
+              <div id="progressBarFill" class="h-full bg-gradient-to-r from-pink-400 via-rose-400 to-amber-400 rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+          </div>
+          <button onclick="openResetConfirm()" title="학습 기록 초기화" class="p-1.5 bg-white text-pink-400 hover:text-rose-600 hover:bg-rose-50 rounded-full border border-pink-200 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- 메인 내비게이션 탭 (4개 알약 모양 큐트 탭) -->
+      <nav class="flex items-center gap-2 mt-3 pt-2.5 border-t border-pink-100 overflow-x-auto pb-0.5">
+        <button id="tabBtn-list" onclick="switchTab('list')" class="tab-btn cute-pill-btn flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-bold bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-md shadow-pink-200 whitespace-nowrap">
+          <span>🌷 한자·단어 학습</span>
+        </button>
+        <button id="tabBtn-write" onclick="switchTab('write')" class="tab-btn cute-pill-btn flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-bold bg-pink-50 text-pink-800 hover:bg-pink-100 border border-pink-200/70 whitespace-nowrap">
+          <span>✏️ 한자·단어 쓰기연습</span>
+        </button>
+        <button id="tabBtn-quiz" onclick="switchTab('quiz')" class="tab-btn cute-pill-btn flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-bold bg-pink-50 text-pink-800 hover:bg-pink-100 border border-pink-200/70 whitespace-nowrap">
+          <span>🎯 객관식 퀴즈</span>
+        </button>
+        <button id="tabBtn-exam" onclick="switchTab('exam')" class="tab-btn cute-pill-btn flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-bold bg-pink-50 text-pink-800 hover:bg-pink-100 border border-pink-200/70 whitespace-nowrap">
+          <span>💯 받아쓰기 시험</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 메인 콘텐츠 컨테이너 -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6">
+
+    <!-- ==========================================
+         TAB 1: 한자 목록 & 단어 학습 뷰
+         ========================================== -->
+    <section id="view-list" class="space-y-5">
+      <!-- 검색 및 필터 컨트롤 바 -->
+      <div class="cute-card p-4 sm:p-5 space-y-3.5">
+        <div class="flex flex-col md:flex-row gap-3">
+          <!-- 검색 인풋 -->
+          <div class="relative flex-1">
+            <svg class="w-5 h-5 text-pink-400 absolute left-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input type="text" id="searchInput" oninput="filterKanjiList()" placeholder="한자, 한국어 뜻(예: 학교, 먹다), 읽기(예: がく, ひと) 검색..." class="w-full pl-11 pr-10 py-2.5 bg-pink-50/70 border-2 border-pink-200 rounded-full text-sm text-pink-950 placeholder-pink-400 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:bg-white transition-all" />
+            <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3.5 top-1/2 -translate-y-1/2 text-pink-400 hover:text-pink-600">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+          </div>
+
+          <!-- 암기 상태 필터 -->
+          <div class="flex items-center gap-1.5 bg-pink-100/70 p-1.5 rounded-full self-start md:self-auto border border-pink-200/70">
+            <button onclick="setMemorizedFilter('all')" id="memFilter-all" class="mem-filter-btn px-3.5 py-1.5 rounded-full text-xs font-extrabold bg-white text-pink-600 shadow-xs transition-all">전체 보기</button>
+            <button onclick="setMemorizedFilter('unlearned')" id="memFilter-unlearned" class="mem-filter-btn px-3.5 py-1.5 rounded-full text-xs font-bold text-pink-800/75 hover:text-pink-900 transition-all">미암기만</button>
+            <button onclick="setMemorizedFilter('learned')" id="memFilter-learned" class="mem-filter-btn px-3.5 py-1.5 rounded-full text-xs font-bold text-pink-800/75 hover:text-pink-900 transition-all">암기 완료</button>
+          </div>
+        </div>
+
+        <!-- 주제별 카테고리 칩 -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-1" id="categoryChips">
+          <button onclick="setCategoryFilter('전체')" class="cat-chip active px-4 py-1.5 rounded-full text-xs font-extrabold bg-pink-500 text-white shadow-xs whitespace-nowrap transition-all">🌸 전체 (96)</button>
+          <button onclick="setCategoryFilter('숫자/화폐')" class="cat-chip px-4 py-1.5 rounded-full text-xs font-bold bg-pink-50 text-pink-800 border border-pink-200/80 hover:bg-pink-100 whitespace-nowrap transition-all">🔢 숫자 · 화폐</button>
+          <button onclick="setCategoryFilter('시간/요일')" class="cat-chip px-4 py-1.5 rounded-full text-xs font-bold bg-pink-50 text-pink-800 border border-pink-200/80 hover:bg-pink-100 whitespace-nowrap transition-all">⏰ 시간 · 요일</button>
+          <button onclick="setCategoryFilter('자연/방위')" class="cat-chip px-4 py-1.5 rounded-full text-xs font-bold bg-pink-50 text-pink-800 border border-pink-200/80 hover:bg-pink-100 whitespace-nowrap transition-all">🌿 자연 · 방위</button>
+          <button onclick="setCategoryFilter('사람/신체')" class="cat-chip px-4 py-1.5 rounded-full text-xs font-bold bg-pink-50 text-pink-800 border border-pink-200/80 hover:bg-pink-100 whitespace-nowrap transition-all">🧸 사람 · 신체</button>
+          <button onclick="setCategoryFilter('동작/상태/사물')" class="cat-chip px-4 py-1.5 rounded-full text-xs font-bold bg-pink-50 text-pink-800 border border-pink-200/80 hover:bg-pink-100 whitespace-nowrap transition-all">🎒 동작 · 상태 · 사물</button>
+        </div>
+      </div>
+
+      <!-- 검색 결과 카운트 안내 -->
+      <div class="flex items-center justify-between px-2">
+        <p class="text-xs font-bold text-pink-700/80" id="resultCountLabel">총 96개의 한자가 표시됩니다. 카드를 클릭해 단어와 발음을 확인하세요 ✨</p>
+      </div>
+
+      <!-- 한자 그리드 카드 목록 -->
+      <div id="kanjiGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <!-- JS 동적 렌더링 -->
+      </div>
+
+      <!-- 검색 결과 없음 상태 -->
+      <div id="emptyListState" class="hidden cute-card p-12 text-center">
+        <div class="w-16 h-16 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center mx-auto mb-3 text-3xl font-jp font-black border-2 border-pink-200">無</div>
+        <h3 class="cute-title text-xl text-pink-950">조건에 일치하는 한자가 없어요</h3>
+        <p class="text-sm text-pink-700/75 mt-1">검색어나 필터 조건을 살짝 바꿔볼까요?</p>
+        <button onclick="resetAllFilters()" class="cute-pill-btn mt-4 px-5 py-2.5 bg-pink-500 text-white text-xs font-extrabold hover:bg-pink-600 shadow-sm shadow-pink-200">필터 초기화하기</button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 2: 한자 & 단어 쓰기 연습장 (Multi-Canvas)
+         ========================================== -->
+    <section id="view-write" class="hidden space-y-5">
+      <div class="cute-card p-5 sm:p-7">
+        <!-- 상단 모드 스위처 & 항목 선택 바 -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b-2 border-pink-100">
+          <!-- 한자 쓰기 / 단어 쓰기 모드 전환 -->
+          <div class="flex items-center gap-2.5">
+            <div class="inline-flex p-1.5 bg-pink-100/80 rounded-full border border-pink-200">
+              <button id="writeModeBtn-kanji" onclick="switchWriteMode('kanji')" class="px-4 py-1.5 rounded-full text-xs font-extrabold bg-pink-500 text-white shadow-xs transition-all">
+                한자 쓰기 (96자)
+              </button>
+              <button id="writeModeBtn-word" onclick="switchWriteMode('word')" class="px-4 py-1.5 rounded-full text-xs font-extrabold text-pink-800 hover:text-pink-950 transition-all">
+                단어 쓰기 (핵심 어휘)
+              </button>
+            </div>
+            <span class="px-3 py-1 bg-pink-50 border border-pink-200 rounded-full text-xs font-extrabold text-pink-600" id="writeIndexBadge">1 / 96</span>
+          </div>
+
+          <!-- 이전 / 드롭다운 선택 / 다음 -->
+          <div class="flex items-center gap-2">
+            <button onclick="prevWriteItem()" class="cute-pill-btn flex items-center gap-1 px-3.5 py-2 bg-pink-100 hover:bg-pink-200 text-pink-800 text-xs font-extrabold">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+              이전
+            </button>
+            <select id="writeItemSelect" onchange="selectWriteItemByIndex(this.value)" class="max-w-[190px] sm:max-w-[235px] px-4 py-2 bg-pink-50 border-2 border-pink-200 rounded-full text-xs font-extrabold text-pink-950 focus:outline-none focus:ring-2 focus:ring-pink-400">
+              <!-- JS로 옵션 채움 -->
+            </select>
+            <button onclick="nextWriteItem()" class="cute-pill-btn flex items-center gap-1 px-3.5 py-2 bg-pink-100 hover:bg-pink-200 text-pink-800 text-xs font-extrabold">
+              다음
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 쓰기 메인 영역: 좌측 멀티 원고지 캔버스 + 우측 상세 정보 -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-5 items-start">
+          <!-- 좌측: 멀티 캔버스 보드 -->
+          <div class="lg:col-span-7 flex flex-col items-center">
+            <div id="writeCanvasBoard" class="w-full flex flex-wrap items-center justify-center gap-3.5 py-2">
+              <!-- JS 동적 렌더링 -->
+            </div>
+
+            <!-- 캔버스 공통 컨트롤 툴바 -->
+            <div class="w-full max-w-[460px] mt-4 space-y-3">
+              <div class="flex flex-wrap items-center justify-between gap-2 bg-pink-50/90 px-4 py-2.5 rounded-full border-2 border-pink-200/80">
+                <!-- 펜 색상 -->
+                <div class="flex items-center gap-2">
+                  <span class="text-[11px] font-extrabold text-pink-700">펜 색:</span>
+                  <button onclick="setPenColor('#4A2C3A')" class="pen-color-btn w-6 h-6 rounded-full bg-[#4A2C3A] ring-2 ring-offset-2 ring-pink-500 transition-transform" data-color="#4A2C3A" title="초코 먹색"></button>
+                  <button onclick="setPenColor('#E11D48')" class="pen-color-btn w-6 h-6 rounded-full bg-rose-500 transition-transform" data-color="#E11D48" title="딸기 핑크"></button>
+                  <button onclick="setPenColor('#7C3AED')" class="pen-color-btn w-6 h-6 rounded-full bg-violet-600 transition-transform" data-color="#7C3AED" title="포도 퍼플"></button>
+                </div>
+
+                <!-- 펜 굵기 -->
+                <div class="flex items-center gap-1.5">
+                  <span class="text-[11px] font-extrabold text-pink-700">굵기:</span>
+                  <button onclick="setPenWidth(6)" class="pen-size-btn px-2.5 py-1 rounded-full text-[11px] font-bold text-pink-800 hover:bg-pink-200/60" data-size="6">얇게</button>
+                  <button onclick="setPenWidth(10)" class="pen-size-btn px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-pink-500 text-white" data-size="10">보통</button>
+                  <button onclick="setPenWidth(15)" class="pen-size-btn px-2.5 py-1 rounded-full text-[11px] font-bold text-pink-800 hover:bg-pink-200/60" data-size="15">굵게</button>
+                </div>
+              </div>
+
+              <!-- 액션 버튼들 -->
+              <div class="grid grid-cols-3 gap-2.5">
+                <button onclick="toggleWriteGuide()" class="cute-pill-btn flex items-center justify-center gap-1.5 py-2.5 px-3 bg-pink-100/80 hover:bg-pink-200/80 text-pink-900 border border-pink-200 text-xs font-extrabold">
+                  <span id="toggleGuideText">👀 가이드 숨기기</span>
+                </button>
+                <button onclick="undoLastWriteStroke()" class="cute-pill-btn flex items-center justify-center gap-1.5 py-2.5 px-3 bg-amber-100/80 hover:bg-amber-200/80 text-amber-800 border border-amber-200 text-xs font-extrabold">
+                  <span>↩️ 한 획 취소</span>
+                </button>
+                <button onclick="clearAllWriteCanvases()" class="cute-pill-btn flex items-center justify-center gap-1.5 py-2.5 px-3 bg-rose-100/80 hover:bg-rose-200/80 text-rose-700 border border-rose-200 text-xs font-extrabold">
+                  <span>🧹 전체 지우기</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 우측: 현재 연습 중인 한자/단어 상세 정보 -->
+          <div id="writeInfoPanel" class="lg:col-span-5 bg-pink-50/75 rounded-3xl border-2 border-pink-200/80 p-5 space-y-4">
+            <!-- JS 동적 렌더링 -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 3: 4지선다 객관식 퀴즈 (힌트 숨김 + 단어 퀴즈 지원)
+         ========================================== -->
+    <section id="view-quiz" class="hidden">
+      <!-- 1) 퀴즈 설정 화면 -->
+      <div id="quizSetupPanel" class="max-w-2xl mx-auto cute-card p-6 sm:p-8 space-y-6">
+        <div class="text-center space-y-2">
+          <div class="w-16 h-16 bg-gradient-to-br from-pink-400 to-rose-400 text-white rounded-3xl flex items-center justify-center mx-auto text-3xl shadow-md shadow-pink-200 border-2 border-white">
+            🎯
+          </div>
+          <h2 class="cute-title text-2xl sm:text-3xl text-pink-950">JLPT N5 한자 · 단어 객관식 퀴즈</h2>
+          <p class="text-sm text-pink-700/80">처음에는 읽기 힌트가 숨겨져 있어요! 필요할 때만 힌트 버튼을 눌러보세요 🎀</p>
+        </div>
+
+        <!-- 출제 유형 선택 (5가지 모드) -->
+        <div class="space-y-2.5">
+          <label class="block text-xs font-extrabold text-pink-800">1. 출제 유형 선택</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <button onclick="selectQuizType('kanjiToMeaning')" id="qType-kanjiToMeaning" class="q-type-btn p-4 rounded-3xl border-2 border-pink-500 bg-pink-50/90 text-left transition-all shadow-xs">
+              <div class="text-xs font-extrabold text-pink-600 mb-1">① 단일 한자 → 뜻 고르기</div>
+              <p class="text-[11px] text-pink-900/75">제시된 한자 1자를 보고 알맞은 한국어 뜻을 맞혀요.</p>
+            </button>
+            <button onclick="selectQuizType('meaningToKanji')" id="qType-meaningToKanji" class="q-type-btn p-4 rounded-3xl border-2 border-pink-200 bg-white hover:border-pink-400 text-left transition-all">
+              <div class="text-xs font-extrabold text-pink-950 mb-1">② 한국어 뜻 → 단일 한자</div>
+              <p class="text-[11px] text-pink-800/70">한국어 뜻을 보고 알맞은 일본어 한자 1자를 골라요.</p>
+            </button>
+            <button onclick="selectQuizType('wordToMeaning')" id="qType-wordToMeaning" class="q-type-btn p-4 rounded-3xl border-2 border-pink-200 bg-white hover:border-pink-400 text-left transition-all">
+              <div class="text-xs font-extrabold text-pink-950 mb-1">③ 한자 단어 → 뜻/읽기</div>
+              <p class="text-[11px] text-pink-800/70">한자 단어(예: 学校, 食べる)를 보고 뜻과 후리가나를 골라요.</p>
+            </button>
+            <button onclick="selectQuizType('meaningToWord')" id="qType-meaningToWord" class="q-type-btn p-4 rounded-3xl border-2 border-pink-200 bg-white hover:border-pink-400 text-left transition-all">
+              <div class="text-xs font-extrabold text-pink-950 mb-1">④ 한국어 뜻 → 한자 단어</div>
+              <p class="text-[11px] text-pink-800/70">단어 뜻을 보고 알맞은 일본어 한자 표기를 골라요.</p>
+            </button>
+          </div>
+          <button onclick="selectQuizType('mixed')" id="qType-mixed" class="q-type-btn w-full p-4 rounded-3xl border-2 border-pink-200 bg-white hover:border-pink-400 text-left transition-all">
+            <div class="text-xs font-extrabold text-pink-950 mb-0.5">⑤ 실전 올인원 혼합 (한자 + 단어 전체 출제)</div>
+            <p class="text-[11px] text-pink-800/70">단일 한자 문제와 한자 단어 문제가 무작위로 섞여 출제됩니다.</p>
+          </button>
+        </div>
+
+        <!-- 문제 범위 선택 -->
+        <div class="space-y-2.5">
+          <label class="block text-xs font-extrabold text-pink-800">2. 출제 범위 선택</label>
+          <div class="grid grid-cols-2 gap-3">
+            <button onclick="selectQuizScope('all')" id="qScope-all" class="q-scope-btn py-2.5 px-4 rounded-full border-2 border-pink-500 bg-pink-50 text-xs font-extrabold text-pink-600 transition-all">
+              전체 N5 한자·단어
+            </button>
+            <button onclick="selectQuizScope('unlearned')" id="qScope-unlearned" class="q-scope-btn py-2.5 px-4 rounded-full border-2 border-pink-200 bg-white text-xs font-bold text-pink-800 hover:border-pink-400 transition-all">
+              미암기 한자 집중 공략
+            </button>
+          </div>
+        </div>
+
+        <!-- 문제 수 선택 -->
+        <div class="space-y-2.5">
+          <label class="block text-xs font-extrabold text-pink-800">3. 문제 수 선택</label>
+          <div class="grid grid-cols-3 gap-3">
+            <button onclick="selectQuizCount(10)" id="qCount-10" class="q-count-btn py-2.5 rounded-full border-2 border-pink-500 bg-pink-50 text-xs font-extrabold text-pink-600 transition-all">10문제</button>
+            <button onclick="selectQuizCount(20)" id="qCount-20" class="q-count-btn py-2.5 rounded-full border-2 border-pink-200 bg-white text-xs font-bold text-pink-800 hover:border-pink-400 transition-all">20문제</button>
+            <button onclick="selectQuizCount(999)" id="qCount-999" class="q-count-btn py-2.5 rounded-full border-2 border-pink-200 bg-white text-xs font-bold text-pink-800 hover:border-pink-400 transition-all">전체 도전</button>
+          </div>
+        </div>
+
+        <button onclick="startQuiz()" class="cute-pill-btn w-full py-4 bg-gradient-to-r from-pink-500 via-rose-500 to-pink-500 hover:from-pink-600 hover:to-rose-600 text-white font-extrabold shadow-lg shadow-pink-200 text-base">
+          🌸 객관식 퀴즈 시작하기!
+        </button>
+      </div>
+
+      <!-- 2) 퀴즈 진행 화면 -->
+      <div id="quizPlayPanel" class="hidden max-w-2xl mx-auto cute-card p-6 sm:p-8 space-y-6">
+        <!-- 상단 진행 상태 바 -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between text-xs font-extrabold">
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 bg-pink-100 text-pink-700 rounded-full border border-pink-200" id="quizStepText">문제 1 / 10</span>
+              <span id="quizComboBadge" class="hidden px-3 py-1 bg-amber-100 text-amber-700 border border-amber-200 rounded-full animate-bounce">🔥 2연속 정답!</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-pink-800">점수: <strong class="text-pink-600 text-sm" id="quizScoreText">0</strong>점</span>
+              <button onclick="resetQuizToSetup()" class="text-pink-400 hover:text-pink-600 underline">종료</button>
+            </div>
+          </div>
+          <div class="w-full h-2.5 bg-pink-100 rounded-full overflow-hidden p-0.5">
+            <div id="quizProgressBar" class="h-full bg-gradient-to-r from-pink-400 to-rose-500 rounded-full transition-all duration-300" style="width: 10%"></div>
+          </div>
+        </div>
+
+        <!-- 문제 제시 카드 (처음에는 힌트가 숨겨져 있음) -->
+        <div class="bg-pink-50/75 rounded-3xl border-2 border-pink-200/80 p-6 sm:p-8 text-center relative">
+          <span class="inline-block px-3.5 py-1 bg-white border border-pink-200 rounded-full text-xs font-extrabold text-pink-600 mb-3" id="quizQuestionPrompt">
+            다음 한자의 뜻으로 알맞은 것은?
+          </span>
+
+          <div id="quizQuestionMain" class="kanji-font text-6xl sm:text-7xl font-black text-pink-950 my-2">
+            食
+          </div>
+
+          <!-- 힌트 토글 버튼 & 숨겨진 힌트 영역 -->
+          <div class="mt-3 flex flex-col items-center justify-center gap-2">
+            <button id="quizHintToggleBtn" onclick="revealQuizHint()" class="cute-pill-btn inline-flex items-center gap-1.5 px-4 py-1.5 bg-amber-100/90 hover:bg-amber-200/80 text-amber-800 border border-amber-300/80 text-xs font-extrabold">
+              <span>💡 힌트 보기 (음독·훈독 / 후리가나)</span>
+            </button>
+            <div id="quizHintContent" class="hidden px-4 py-2 bg-white border-2 border-amber-200 rounded-full text-xs font-bold text-pink-950 animate-pop">
+              <!-- JS로 힌트 텍스트 삽입 -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 4지선다 선택지 버튼 -->
+        <div id="quizOptionsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <!-- JS 동적 렌더링 -->
+        </div>
+
+        <!-- 정답/오답 피드백 및 해설 박스 -->
+        <div id="quizFeedbackBox" class="hidden rounded-3xl p-4 sm:p-5 border-2 animate-pop">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <h4 id="quizFeedbackTitle" class="text-sm font-extrabold">정답입니다!</h4>
+                <button onclick="speakCurrentQuizItem()" class="p-1.5 bg-white hover:bg-pink-50 rounded-full text-pink-600 border border-pink-200" title="발음 다시 듣기">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                </button>
+              </div>
+              <p id="quizFeedbackDetail" class="text-xs leading-relaxed"></p>
+            </div>
+            <button onclick="nextQuizQuestion()" class="cute-pill-btn shrink-0 px-5 py-2.5 bg-pink-600 hover:bg-pink-700 text-white text-xs font-extrabold shadow-sm">
+              다음 문제 →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3) 퀴즈 결과 및 오답 노트 화면 -->
+      <div id="quizResultPanel" class="hidden max-w-2xl mx-auto cute-card p-6 sm:p-8 space-y-6">
+        <div class="text-center space-y-2 pb-4 border-b-2 border-pink-100">
+          <span class="inline-block px-3.5 py-1 bg-pink-100 text-pink-700 text-xs font-extrabold rounded-full">🎀 객관식 퀴즈 완료!</span>
+          <h2 class="cute-title text-2xl sm:text-3xl text-pink-950" id="quizFinalScoreTitle">80점 (8 / 10 정답)</h2>
+          <p class="text-sm text-pink-700/80" id="quizFinalComment">훌륭해요! N5 핵심 한자와 단어를 잘 이해하고 있습니다.</p>
+        </div>
+
+        <!-- 오답 노트 영역 -->
+        <div id="wrongNotesSection" class="space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-extrabold text-rose-600 flex items-center gap-1.5">
+              <span>📌 오답 노트 (틀린 문제 복습)</span>
+              <span id="wrongCountBadge" class="px-2.5 py-0.5 bg-rose-100 text-rose-700 rounded-full text-xs">2</span>
+            </h3>
+            <button onclick="retryWrongQuestions()" class="cute-pill-btn px-3.5 py-1.5 bg-rose-500 hover:bg-rose-600 text-white text-xs font-extrabold shadow-xs">
+              틀린 문제만 다시 풀기
+            </button>
+          </div>
+          <div id="wrongNotesList" class="space-y-2.5 max-h-[320px] overflow-y-auto pr-1">
+            <!-- JS 동적 렌더링 -->
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 pt-2">
+          <button onclick="resetQuizToSetup()" class="cute-pill-btn py-3 px-4 bg-pink-100 hover:bg-pink-200 text-pink-800 font-extrabold text-sm">
+            설정으로 돌아가기
+          </button>
+          <button onclick="startQuiz()" class="cute-pill-btn py-3 px-4 bg-pink-500 hover:bg-pink-600 text-white font-extrabold text-sm shadow-md shadow-pink-200">
+            새 퀴즈 다시 시작
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 4: 한자 & 단어 손글씨 받아쓰기 시험 (고정밀 자동 채점)
+         ========================================== -->
+    <section id="view-exam" class="hidden">
+      <!-- 1) 받아쓰기 시험 설정 화면 -->
+      <div id="examSetupPanel" class="max-w-2xl mx-auto cute-card p-6 sm:p-8 space-y-6">
+        <div class="text-center space-y-2">
+          <div class="w-16 h-16 bg-gradient-to-br from-rose-400 to-pink-500 text-white rounded-3xl flex items-center justify-center mx-auto text-3xl shadow-md shadow-pink-200 border-2 border-white">
+            💯
+          </div>
+          <h2 class="cute-title text-2xl sm:text-3xl text-pink-950">한자 · 단어 손글씨 받아쓰기 시험</h2>
+          <p class="text-sm text-pink-800/80 leading-relaxed">
+            제시된 한국어 뜻을 보고 빈 원고지에 직접 한자나 단어를 써보세요.<br/>
+            <strong>획수 범위 · 9구역 획 분포 · 정밀 형태 매칭</strong>으로 꼼꼼하게 자동 채점해 드려요! ✨
+          </p>
+        </div>
+
+        <!-- 출제 대상 선택 -->
+        <div class="space-y-2.5">
+          <label class="block text-xs font-extrabold text-pink-800">1. 시험 유형 선택</label>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <button onclick="selectExamType('kanji')" id="eType-kanji" class="e-type-btn p-4 rounded-3xl border-2 border-pink-500 bg-pink-50/90 text-left transition-all">
+              <div class="text-xs font-extrabold text-pink-600 mb-1">① 단일 한자 쓰기</div>
+              <p class="text-[11px] text-pink-900/75">한자 뜻(예: 먹을 식)을 보고 한자 1자를 써요.</p>
+            </button>
+            <button onclick="selectExamType('word')" id="eType-word" class="e-type-btn p-4 rounded-3xl border-2 border-pink-200 bg-white hover:border-pink-400 text-left transition-all">
+              <div class="text-xs font-extrabold text-pink-950 mb-1">② 한자 단어 쓰기</div>
+              <p class="text-[11px] text-pink-800/70">단어 뜻(예: 학교, 먹다)을 보고 일본어 표기를 써요.</p>
+            </button>
+            <button onclick="selectExamType('mixed')" id="eType-mixed" class="e-type-btn p-4 rounded-3xl border-2 border-pink-200 bg-white hover:border-pink-400 text-left transition-all">
+              <div class="text-xs font-extrabold text-pink-950 mb-1">③ 실전 혼합 시험</div>
+              <p class="text-[11px] text-pink-800/70">단일 한자와 한자 단어가 혼합되어 출제돼요.</p>
+            </button>
+          </div>
+        </div>
+
+        <!-- 문항 수 선택 -->
+        <div class="space-y-2.5">
+          <label class="block text-xs font-extrabold text-pink-800">2. 시험 문항 수 선택</label>
+          <div class="grid grid-cols-3 gap-3">
+            <button onclick="selectExamCount(5)" id="eCount-5" class="e-count-btn py-2.5 rounded-full border-2 border-pink-500 bg-pink-50 text-xs font-extrabold text-pink-600 transition-all">5문제 (빠른 테스트)</button>
+            <button onclick="selectExamCount(10)" id="eCount-10" class="e-count-btn py-2.5 rounded-full border-2 border-pink-200 bg-white text-xs font-bold text-pink-800 hover:border-pink-400 transition-all">10문제 (표준 시험)</button>
+            <button onclick="selectExamCount(15)" id="eCount-15" class="e-count-btn py-2.5 rounded-full border-2 border-pink-200 bg-white text-xs font-bold text-pink-800 hover:border-pink-400 transition-all">15문제 (집중 시험)</button>
+          </div>
+        </div>
+
+        <button onclick="startWritingExam()" class="cute-pill-btn w-full py-4 bg-gradient-to-r from-rose-500 via-pink-500 to-rose-500 hover:from-rose-600 hover:to-pink-600 text-white font-extrabold shadow-lg shadow-pink-200 text-base">
+          ✍️ 받아쓰기 시험 시작하기!
+        </button>
+      </div>
+
+      <!-- 2) 받아쓰기 시험 진행 화면 -->
+      <div id="examPlayPanel" class="hidden max-w-3xl mx-auto cute-card p-5 sm:p-8 space-y-6">
+        <!-- 상단 진행 헤더 -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between text-xs font-extrabold">
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 bg-rose-100 text-rose-700 rounded-full border border-rose-200" id="examStepText">문항 1 / 5</span>
+              <span class="px-3 py-1 bg-pink-50 text-pink-700 rounded-full border border-pink-200" id="examTypeBadge">단일 한자 쓰기</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-pink-800">현재 정답: <strong class="text-pink-600 text-sm" id="examCorrectCountText">0</strong>개</span>
+              <button onclick="resetExamToSetup()" class="text-pink-400 hover:text-pink-600 underline">시험 종료</button>
+            </div>
+          </div>
+          <div class="w-full h-2.5 bg-pink-100 rounded-full overflow-hidden p-0.5">
+            <div id="examProgressBar" class="h-full bg-gradient-to-r from-rose-400 to-pink-500 rounded-full transition-all duration-300" style="width: 20%"></div>
+          </div>
+        </div>
+
+        <!-- 제시어 영역 (한국어 뜻 + 읽기 힌트 토글) -->
+        <div class="bg-pink-50/80 rounded-3xl border-2 border-pink-200/80 p-5 text-center space-y-2.5">
+          <span class="inline-block px-3.5 py-1 bg-white border border-pink-200 rounded-full text-xs font-extrabold text-pink-600" id="examPromptLabel">
+            다음 뜻에 해당하는 한자를 아래 칸에 직접 쓰세요
+          </span>
+          <h3 class="cute-title text-2xl sm:text-3xl text-pink-950" id="examPromptMeaning">
+            먹을 식 / 밥 식
+          </h3>
+
+          <!-- 발음/읽기 힌트 버튼 (처음엔 숨김) -->
+          <div class="flex flex-col items-center gap-1.5 pt-1">
+            <div class="flex items-center gap-2">
+              <button id="examHintToggleBtn" onclick="revealExamHint()" class="cute-pill-btn inline-flex items-center gap-1 px-3.5 py-1.5 bg-amber-100/90 hover:bg-amber-200/80 text-amber-800 border border-amber-300 text-xs font-extrabold">
+                <span>💡 읽기 힌트 보기</span>
+              </button>
+              <button onclick="speakCurrentExamAnswer()" class="cute-pill-btn inline-flex items-center gap-1 px-3.5 py-1.5 bg-white hover:bg-pink-100 text-pink-600 border border-pink-200 text-xs font-extrabold">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                <span>발음 듣기</span>
+              </button>
+            </div>
+            <div id="examHintContent" class="hidden px-4 py-1.5 bg-white border-2 border-amber-200 rounded-full text-xs font-bold text-pink-950 animate-pop">
+              <!-- JS로 읽기 힌트 삽입 -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 빈 원고지 캔버스 보드 (채점 전엔 정답 워터마크 없음, 채점 후 정답 오버레이 표시) -->
+        <div class="flex flex-col items-center">
+          <div id="examCanvasBoard" class="w-full flex flex-wrap items-center justify-center gap-3.5 py-1">
+            <!-- JS로 글자 수에 맞는 원고지 캔버스 칸 동적 생성 -->
+          </div>
+
+          <!-- 필기 보조 버튼 (채점 전에 활성화) -->
+          <div id="examDrawingControls" class="flex flex-wrap items-center justify-center gap-2.5 mt-4">
+            <button onclick="undoLastExamStroke()" class="cute-pill-btn flex items-center gap-1.5 px-4 py-2.5 bg-amber-100/80 hover:bg-amber-200/80 text-amber-800 border border-amber-200 text-xs font-extrabold">
+              <span>↩️ 한 획 취소</span>
+            </button>
+            <button onclick="clearAllExamCanvases()" class="cute-pill-btn flex items-center gap-1.5 px-4 py-2.5 bg-pink-100/80 hover:bg-pink-200/80 text-pink-800 border border-pink-200 text-xs font-extrabold">
+              <span>🧹 모두 지우기</span>
+            </button>
+            <button onclick="gradeCurrentExamQuestion()" class="cute-pill-btn flex items-center gap-1.5 px-6 py-2.5 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white text-xs sm:text-sm font-extrabold shadow-md shadow-pink-200">
+              <span>✨ 자동 채점하기</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 자동 채점 결과 리포트 & 판정 보정 영역 -->
+        <div id="examGradeResultBox" class="hidden rounded-3xl p-5 border-2 animate-pop space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <span id="examGradeBadge" class="px-3.5 py-1 rounded-full text-xs font-extrabold">⭕ 자동 채점: 정답!</span>
+                <span id="examSimilarityScore" class="text-xs font-extrabold text-pink-900 bg-white/90 px-3 py-1 rounded-full border border-pink-200">
+                  종합 일치율: 78%
+                </span>
+              </div>
+              <p id="examGradeAnswerInfo" class="text-sm font-extrabold text-pink-950 mt-2">
+                정답 표기: <span class="kanji-font text-xl text-pink-600">食</span>
+              </p>
+              <p id="examGradeBreakdown" class="text-xs text-pink-900/80 mt-1 leading-relaxed">
+                <!-- 상세 분석 결과 -->
+              </p>
+            </div>
+
+            <div class="flex flex-col sm:items-end gap-2 shrink-0">
+              <button onclick="toggleManualOverrideGrade()" id="examOverrideBtn" class="cute-pill-btn px-3.5 py-1.5 bg-white hover:bg-pink-50 text-pink-800 border border-pink-300 text-[11px] font-extrabold">
+                판정 수정 (오답으로 변경)
+              </button>
+              <button onclick="nextExamQuestion()" class="cute-pill-btn px-5 py-2.5 bg-pink-600 hover:bg-pink-700 text-white text-xs font-extrabold shadow-sm">
+                다음 문항 →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3) 받아쓰기 시험 최종 성적표 & 오답 노트 -->
+      <div id="examResultPanel" class="hidden max-w-2xl mx-auto cute-card p-6 sm:p-8 space-y-6">
+        <div class="text-center space-y-2 pb-4 border-b-2 border-pink-100">
+          <span class="inline-block px-3.5 py-1 bg-rose-100 text-rose-700 text-xs font-extrabold rounded-full">🎀 받아쓰기 시험 결과</span>
+          <h2 class="cute-title text-2xl sm:text-3xl text-pink-950" id="examFinalScoreTitle">80점 (4 / 5 정답)</h2>
+          <p class="text-xs font-extrabold text-pink-600" id="examAvgAccuracyText">평균 손글씨 정밀 일치율: 74%</p>
+          <p class="text-sm text-pink-800/80" id="examFinalComment">직접 손으로 쓰면서 익히면 기억에 훨씬 오래 남아요!</p>
+        </div>
+
+        <!-- 틀린 문제 복습 리스트 -->
+        <div id="examWrongSection" class="space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-extrabold text-rose-600 flex items-center gap-1.5">
+              <span>📌 받아쓰기 오답 노트</span>
+              <span id="examWrongCountBadge" class="px-2.5 py-0.5 bg-rose-100 text-rose-700 rounded-full text-xs">1</span>
+            </h3>
+            <button onclick="retryWrongExamQuestions()" class="cute-pill-btn px-3.5 py-1.5 bg-rose-500 hover:bg-rose-600 text-white text-xs font-extrabold shadow-xs">
+              틀린 문제만 재시험
+            </button>
+          </div>
+          <div id="examWrongList" class="space-y-2.5 max-h-[320px] overflow-y-auto pr-1">
+            <!-- JS 동적 렌더링 -->
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 pt-2">
+          <button onclick="resetExamToSetup()" class="cute-pill-btn py-3 px-4 bg-pink-100 hover:bg-pink-200 text-pink-800 font-extrabold text-sm">
+            시험 설정으로
+          </button>
+          <button onclick="startWritingExam()" class="cute-pill-btn py-3 px-4 bg-pink-500 hover:bg-pink-600 text-white font-extrabold text-sm shadow-md shadow-pink-200">
+            새 받아쓰기 시험
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       한자 상세 & 단어 학습 모달
+       ========================================== -->
+  <div id="kanjiModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-pink-950/35 backdrop-blur-xs">
+    <div class="bg-white w-full max-w-lg rounded-[32px] shadow-2xl border-2 border-pink-200 overflow-hidden animate-pop flex flex-col max-h-[90vh]">
+      <!-- 모달 상단 바 -->
+      <div class="flex items-center justify-between px-6 py-3.5 bg-pink-50/90 border-b-2 border-pink-100">
+        <div class="flex items-center gap-2">
+          <span id="modalCategory" class="px-3 py-0.5 bg-pink-200/80 text-pink-800 text-xs font-extrabold rounded-full">카테고리</span>
+          <span id="modalStrokes" class="text-xs font-bold text-pink-600">총 0획</span>
+        </div>
+        <button onclick="closeKanjiModal()" class="p-1.5 bg-white text-pink-400 hover:text-pink-700 hover:bg-pink-100 rounded-full border border-pink-200 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- 모달 본문 (스크롤 가능) -->
+      <div class="p-5 sm:p-6 overflow-y-auto space-y-5">
+        <!-- 메인 한자 & 뜻 -->
+        <div class="flex items-center gap-5">
+          <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl kanji-grid-bg border-2 border-pink-200 flex items-center justify-center shrink-0 shadow-xs">
+            <span id="modalChar" class="kanji-font text-6xl sm:text-7xl font-black text-pink-950">日</span>
+          </div>
+          <div class="flex-1 space-y-2.5">
+            <h2 id="modalMeaning" class="cute-title text-2xl sm:text-3xl text-pink-950">날 일 / 해 일</h2>
+            <div class="flex flex-wrap gap-2">
+              <button onclick="speakModalKanji()" class="cute-pill-btn inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-pink-500 hover:bg-pink-600 text-white text-xs font-extrabold shadow-xs">
+                <span>🔊 발음 듣기</span>
+              </button>
+              <button onclick="goToWriteFromModal()" class="cute-pill-btn inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 text-xs font-extrabold">
+                <span>✏️ 직접 써보기</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 음독 & 훈독 카드 -->
+        <div class="grid grid-cols-2 gap-3">
+          <div class="bg-pink-50/80 p-3.5 rounded-2xl border border-pink-200/80">
+            <div class="text-[11px] font-extrabold text-pink-600 mb-1">음독 (音読み)</div>
+            <div id="modalOn" class="kanji-font text-sm font-bold text-pink-950">ニチ · ジツ</div>
+          </div>
+          <div class="bg-rose-50/80 p-3.5 rounded-2xl border border-rose-200/80">
+            <div class="text-[11px] font-extrabold text-rose-600 mb-1">훈독 (訓読み)</div>
+            <div id="modalKun" class="kanji-font text-sm font-bold text-pink-950">ひ · -び · -か</div>
+          </div>
+        </div>
+
+        <!-- 해당 한자로 이루어진 N5 핵심 단어 목록 -->
+        <div>
+          <h3 class="text-xs font-extrabold text-pink-700 mb-2.5 flex items-center justify-between">
+            <span>🌷 핵심 N5 관련 단어</span>
+            <span class="text-[11px] font-normal text-pink-500">단어 쓰기 버튼으로 바로 연습 가능!</span>
+          </h3>
+          <div id="modalWordsList" class="space-y-2.5">
+            <!-- JS 동적 생성 -->
+          </div>
+        </div>
+      </div>
+
+      <!-- 모달 하단 액션 바 -->
+      <div class="px-5 py-3.5 bg-pink-50/90 border-t-2 border-pink-100 flex items-center justify-between gap-3">
+        <div class="flex items-center gap-1.5">
+          <button onclick="navigateModalKanji(-1)" class="p-2 bg-white border border-pink-200 hover:bg-pink-100 rounded-full text-pink-700 transition-colors" title="이전 한자">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button onclick="navigateModalKanji(1)" class="p-2 bg-white border border-pink-200 hover:bg-pink-100 rounded-full text-pink-700 transition-colors" title="다음 한자">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <button id="modalMemorizeBtn" onclick="toggleModalKanjiMemorized()" class="cute-pill-btn flex-1 py-2.5 px-4 text-xs font-extrabold flex items-center justify-center gap-1.5">
+          <!-- JS 동적 업데이트 -->
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 학습 초기화 확인 커스텀 모달 (alert/confirm 미사용) -->
+  <div id="resetConfirmModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-pink-950/35 backdrop-blur-xs">
+    <div class="bg-white w-full max-w-sm rounded-[30px] p-6 shadow-xl border-2 border-pink-200 animate-pop text-center space-y-4">
+      <div class="w-14 h-14 bg-rose-100 text-rose-500 rounded-full flex items-center justify-center mx-auto text-2xl border-2 border-rose-200">
+        🍓
+      </div>
+      <div>
+        <h3 class="cute-title text-xl text-pink-950">암기 기록을 초기화할까요?</h3>
+        <p class="text-xs text-pink-700/80 mt-1">체크한 모든 한자 암기 완료 내역이 초기화됩니다.</p>
+      </div>
+      <div class="grid grid-cols-2 gap-2.5 pt-1">
+        <button onclick="closeResetConfirm()" class="cute-pill-btn py-2.5 bg-pink-100 hover:bg-pink-200 text-pink-800 text-xs font-extrabold">취소</button>
+        <button onclick="confirmResetProgress()" class="cute-pill-btn py-2.5 bg-rose-500 hover:bg-rose-600 text-white text-xs font-extrabold">초기화하기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 토스트 메시지 알림 -->
+  <div id="toastBox" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 hidden items-center gap-2 px-5 py-2.5 bg-pink-900 text-white text-xs font-extrabold rounded-full shadow-lg border border-pink-400">
+    <span id="toastText">알림 메시지</span>
+  </div>
+
+  <script>
+    // =========================================================================
+    // 1. JLPT N5 핵심 한자 데이터베이스 (총 96자 + 관련 핵심 단어)
+    // =========================================================================
+    const KANJI_DATA = [
+      // [1] 숫자/화폐 (14자)
+      { id: 1, kanji: '一', meaning: '하나 일', category: '숫자/화폐', strokes: 1, on: 'イチ · イツ (이치·이츠)', kun: 'ひと · ひと(つ) (히토·히토츠)', speech: 'いち', words: [
+        { word: '一つ', reading: 'ひとつ', meaning: '한 개, 하나' },
+        { word: '一月', reading: 'いちがつ', meaning: '1월' },
+        { word: '一日', reading: 'ついたち', meaning: '초하루 (1일)' }
+      ]},
+      { id: 2, kanji: '二', meaning: '두 이', category: '숫자/화폐', strokes: 2, on: 'ニ (니)', kun: 'ふた · ふた(つ) (후타·후타츠)', speech: 'に', words: [
+        { word: '二つ', reading: 'ふたつ', meaning: '두 개, 둘' },
+        { word: '二月', reading: 'にがつ', meaning: '2월' },
+        { word: '二人', reading: 'ふたり', meaning: '두 사람, 둘이서' }
+      ]},
+      { id: 3, kanji: '三', meaning: '석 삼', category: '숫자/화폐', strokes: 3, on: 'サン (산)', kun: 'み · みっ(つ) (미·밋츠)', speech: 'さん', words: [
+        { word: '三つ', reading: 'みっつ', meaning: '세 개, 셋' },
+        { word: '三月', reading: 'さんがつ', meaning: '3월' },
+        { word: '三日', reading: 'みっか', meaning: '3일, 사흘' }
+      ]},
+      { id: 4, kanji: '四', meaning: '넉 사', category: '숫자/화폐', strokes: 5, on: 'シ (시)', kun: 'よ · よっ(つ) · よん (요·욧츠·욘)', speech: 'よん', words: [
+        { word: '四つ', reading: 'よっつ', meaning: '네 개, 넷' },
+        { word: '四月', reading: 'しがつ', meaning: '4월' },
+        { word: '四日', reading: 'よっか', meaning: '4일, 나흘' }
+      ]},
+      { id: 5, kanji: '五', meaning: '다섯 오', category: '숫자/화폐', strokes: 4, on: 'ゴ (고)', kun: 'いつ · いつ(つ) (이츠·이츠츠)', speech: 'ご', words: [
+        { word: '五つ', reading: 'いつつ', meaning: '다섯 개, 다섯' },
+        { word: '五月', reading: 'ごがつ', meaning: '5월' },
+        { word: '五日', reading: 'いつか', meaning: '5일, 닷새' }
+      ]},
+      { id: 6, kanji: '六', meaning: '여섯 육', category: '숫자/화폐', strokes: 4, on: 'ロク (로쿠)', kun: 'む · むっ(つ) (무·뭇츠)', speech: 'ろく', words: [
+        { word: '六つ', reading: 'むっつ', meaning: '여섯 개, 여섯' },
+        { word: '六月', reading: 'ろくがつ', meaning: '6월' },
+        { word: '六日', reading: 'むいか', meaning: '6일, 엿새' }
+      ]},
+      { id: 7, kanji: '七', meaning: '일곱 칠', category: '숫자/화폐', strokes: 2, on: 'シチ (시치)', kun: 'なな · なな(つ) (나나·나나츠)', speech: 'なな', words: [
+        { word: '七つ', reading: 'ななつ', meaning: '일곱 개, 일곱' },
+        { word: '七月', reading: 'しちがつ', meaning: '7월' },
+        { word: '七日', reading: 'なのか', meaning: '7일, 이레' }
+      ]},
+      { id: 8, kanji: '八', meaning: '여덟 팔', category: '숫자/화폐', strokes: 2, on: 'ハチ (하치)', kun: 'や · やっ(つ) (야·얏츠)', speech: 'はち', words: [
+        { word: '八つ', reading: 'やっつ', meaning: '여덟 개, 여덟' },
+        { word: '八月', reading: 'はちがつ', meaning: '8월' },
+        { word: '八日', reading: 'ようか', meaning: '8일, 여드레' }
+      ]},
+      { id: 9, kanji: '九', meaning: '아홉 구', category: '숫자/화폐', strokes: 2, on: 'キュウ · ク (큐·쿠)', kun: 'ここの · ここの(つ) (코코노·코코노츠)', speech: 'きゅう', words: [
+        { word: '九つ', reading: 'ここのつ', meaning: '아홉 개, 아홉' },
+        { word: '九月', reading: 'くがつ', meaning: '9월' },
+        { word: '九日', reading: 'ここのか', meaning: '9일, 아흐레' }
+      ]},
+      { id: 10, kanji: '十', meaning: '열 십', category: '숫자/화폐', strokes: 2, on: 'ジュウ (쥬)', kun: 'とお · と (토오·토)', speech: 'じゅう', words: [
+        { word: '十', reading: 'とお', meaning: '열 개, 열' },
+        { word: '十月', reading: 'じゅうがつ', meaning: '10월' },
+        { word: '十分', reading: 'じゅっぷん', meaning: '10분 / 충분함' }
+      ]},
+      { id: 11, kanji: '百', meaning: '일백 백', category: '숫자/화폐', strokes: 6, on: 'ヒャク (햐쿠)', kun: '없음', speech: 'ひゃく', words: [
+        { word: '百円', reading: 'ひゃくえん', meaning: '100엔' },
+        { word: '三百', reading: 'さんびゃく', meaning: '300' },
+        { word: '六百', reading: 'ろっぴゃく', meaning: '600' }
+      ]},
+      { id: 12, kanji: '千', meaning: '일천 천', category: '숫자/화폐', strokes: 3, on: 'セン (센)', kun: 'ち (치)', speech: 'せん', words: [
+        { word: '千円', reading: 'せんえん', meaning: '1,000엔' },
+        { word: '三千', reading: 'さんぜん', meaning: '3,000' },
+        { word: '千葉', reading: 'ちば', meaning: '치바(지명)' }
+      ]},
+      { id: 13, kanji: '万', meaning: '일만 만', category: '숫자/화폐', strokes: 3, on: 'マン · バン (만·반)', kun: '없음', speech: 'いちまん', words: [
+        { word: '一万円', reading: 'いちまんえん', meaning: '1만 엔' },
+        { word: '万年筆', reading: 'まんねんひつ', meaning: '만년필' },
+        { word: '万国', reading: 'ばんこく', meaning: '만국' }
+      ]},
+      { id: 14, kanji: '円', meaning: '둥글 원 / 엔', category: '숫자/화폐', strokes: 4, on: 'エン (엔)', kun: 'まる(い) (마루이)', speech: 'えん', words: [
+        { word: '百円', reading: 'ひゃくえん', meaning: '100엔' },
+        { word: '円い', reading: 'まるい', meaning: '둥글다' },
+        { word: '円高', reading: 'えんだか', meaning: '엔고' }
+      ]},
+
+      // [2] 시간/요일 (19자)
+      { id: 15, kanji: '日', meaning: '날 일 / 해 일', category: '시간/요일', strokes: 4, on: 'ニチ · ジツ (니치·지츠)', kun: 'ひ · -び · -か (히·비·카)', speech: 'にちようび', words: [
+        { word: '日曜日', reading: 'にちようび', meaning: '일요일' },
+        { word: '日本', reading: 'にほん', meaning: '일본' },
+        { word: '毎日', reading: 'まいにち', meaning: '매일' }
+      ]},
+      { id: 16, kanji: '月', meaning: '달 월', category: '시간/요일', strokes: 4, on: 'ゲツ · ガツ (게츠·가츠)', kun: 'つき (츠키)', speech: 'げつようび', words: [
+        { word: '月曜日', reading: 'げつようび', meaning: '월요일' },
+        { word: '今月', reading: 'こんげつ', meaning: '이번 달' },
+        { word: '月', reading: 'つき', meaning: '달' }
+      ]},
+      { id: 17, kanji: '火', meaning: '불 화', category: '시간/요일', strokes: 4, on: 'カ (카)', kun: 'ひ (히)', speech: 'かようび', words: [
+        { word: '火曜日', reading: 'かようび', meaning: '화요일' },
+        { word: '火事', reading: 'かじ', meaning: '화재' },
+        { word: '火', reading: 'ひ', meaning: '불' }
+      ]},
+      { id: 18, kanji: '水', meaning: '물 수', category: '시간/요일', strokes: 4, on: 'スイ (스이)', kun: 'みず (미즈)', speech: 'みず', words: [
+        { word: '水曜日', reading: 'すいようび', meaning: '수요일' },
+        { word: '水', reading: 'みず', meaning: '물 (찬물)' },
+        { word: '水泳', reading: 'すいえい', meaning: '수영' }
+      ]},
+      { id: 19, kanji: '木', meaning: '나무 목', category: '시간/요일', strokes: 4, on: 'モク · ボク (모쿠·보쿠)', kun: 'き · こ (키·코)', speech: 'き', words: [
+        { word: '木曜日', reading: 'もくようび', meaning: '목요일' },
+        { word: '木', reading: 'き', meaning: '나무' },
+        { word: '木陰', reading: 'こかげ', meaning: '나무 그늘' }
+      ]},
+      { id: 20, kanji: '金', meaning: '쇠 금 / 돈 금', category: '시간/요일', strokes: 8, on: 'キン · コン (킨·콘)', kun: 'かね (카네)', speech: 'おかね', words: [
+        { word: '金曜日', reading: 'きんようび', meaning: '금요일' },
+        { word: 'お金', reading: 'おかね', meaning: '돈' },
+        { word: '金色', reading: 'きんいろ', meaning: '금색' }
+      ]},
+      { id: 21, kanji: '土', meaning: '흙 토', category: '시간/요일', strokes: 3, on: 'ド · ト (도·토)', kun: 'つち (츠치)', speech: 'どようび', words: [
+        { word: '土曜日', reading: 'どようび', meaning: '토요일' },
+        { word: '土', reading: 'つち', meaning: '흙' },
+        { word: 'お土産', reading: 'おみやげ', meaning: '선물, 기념품' }
+      ]},
+      { id: 22, kanji: '年', meaning: '해 년', category: '시간/요일', strokes: 6, on: 'ネン (넨)', kun: 'とし (토시)', speech: 'ことし', words: [
+        { word: '今年', reading: 'ことし', meaning: '올해' },
+        { word: '来年', reading: 'らいねん', meaning: '내년' },
+        { word: '去年', reading: 'きょねん', meaning: '작년' }
+      ]},
+      { id: 23, kanji: '今', meaning: '이제 금', category: '시간/요일', strokes: 4, on: 'コン · キン (콘·킨)', kun: 'いま (이마)', speech: 'いま', words: [
+        { word: '今', reading: 'いま', meaning: '지금' },
+        { word: '今日', reading: 'きょう', meaning: '오늘' },
+        { word: '今週', reading: 'こんしゅう', meaning: '이번 주' }
+      ]},
+      { id: 24, kanji: '時', meaning: '때 시', category: '시간/요일', strokes: 10, on: 'ジ (지)', kun: 'とき (토키)', speech: 'じかん', words: [
+        { word: '時間', reading: 'じかん', meaning: '시간' },
+        { word: '時計', reading: 'とけい', meaning: '시계' },
+        { word: '時々', reading: 'ときどき', meaning: '가끔, 때때로' }
+      ]},
+      { id: 25, kanji: '分', meaning: '나눌 분 / 분', category: '시간/요일', strokes: 4, on: 'フン · ブン · プン (훈·분·푼)', kun: 'わ(かる) (와카루)', speech: 'わかります', words: [
+        { word: '分かる', reading: 'わかる', meaning: '알다, 이해하다' },
+        { word: '五分', reading: 'ごふん', meaning: '5분' },
+        { word: '自分', reading: 'じぶん', meaning: '자신, 자기' }
+      ]},
+      { id: 26, kanji: '半', meaning: '반 반', category: '시간/요일', strokes: 5, on: 'ハン (한)', kun: 'なか(ば) (나카바)', speech: 'はんぶん', words: [
+        { word: '半分', reading: 'はんぶん', meaning: '절반' },
+        { word: '一時半', reading: 'いちじはん', meaning: '1시 반' },
+        { word: '半年', reading: 'はんとし', meaning: '반년' }
+      ]},
+      { id: 27, kanji: '週', meaning: '주일 주', category: '시간/요일', strokes: 11, on: 'シュウ (슈)', kun: '없음', speech: 'らいしゅう', words: [
+        { word: '今週', reading: 'こんしゅう', meaning: '이번 주' },
+        { word: '来週', reading: 'らいしゅう', meaning: '다음 주' },
+        { word: '先週', reading: 'せんしゅう', meaning: '지난주' }
+      ]},
+      { id: 28, kanji: '毎', meaning: '매양 매', category: '시간/요일', strokes: 6, on: 'マイ (마이)', kun: '없음', speech: 'まいにち', words: [
+        { word: '毎日', reading: 'まいにち', meaning: '매일' },
+        { word: '毎朝', reading: 'まいあさ', meaning: '매일 아침' },
+        { word: '毎年', reading: 'まいとし', meaning: '매년' }
+      ]},
+      { id: 29, kanji: '先', meaning: '먼저 선', category: '시간/요일', strokes: 6, on: 'セン (센)', kun: 'さき (사키)', speech: 'せんせい', words: [
+        { word: '先生', reading: 'せんせい', meaning: '선생님' },
+        { word: '先月', reading: 'せんげつ', meaning: '지난달' },
+        { word: 'お先に', reading: 'おさきに', meaning: '먼저 (실례하겠습니다)' }
+      ]},
+      { id: 30, kanji: '来', meaning: '올 래', category: '시간/요일', strokes: 7, on: 'ライ (라이)', kun: 'く(る) (쿠루)', speech: 'きます', words: [
+        { word: '来る', reading: 'くる', meaning: '오다' },
+        { word: '来週', reading: 'らいしゅう', meaning: '다음 주' },
+        { word: '来月', reading: 'らいげつ', meaning: '다음 달' }
+      ]},
+      { id: 31, kanji: '前', meaning: '앞 전', category: '시간/요일', strokes: 9, on: 'ゼン (젠)', kun: 'まえ (마에)', speech: 'まえ', words: [
+        { word: '前', reading: 'まえ', meaning: '앞, 전' },
+        { word: '午前', reading: 'ごぜん', meaning: '오전' },
+        { word: '名前', reading: 'なまえ', meaning: '이름' }
+      ]},
+      { id: 32, kanji: '後', meaning: '뒤 후', category: '시간/요일', strokes: 9, on: 'ゴ · コウ (고·코우)', kun: 'うし(ろ) · あと (우시로·아토)', speech: 'うしろ', words: [
+        { word: '後ろ', reading: 'うしろ', meaning: '뒤' },
+        { word: '午後', reading: 'ごご', meaning: '오후' },
+        { word: '後で', reading: 'あとで', meaning: '나중에' }
+      ]},
+      { id: 33, kanji: '午', meaning: '낮 오', category: '시간/요일', strokes: 4, on: 'ゴ (고)', kun: '없음', speech: 'ごぜん', words: [
+        { word: '午前', reading: 'ごぜん', meaning: '오전' },
+        { word: '午後', reading: 'ごご', meaning: '오후' },
+        { word: '正午', reading: 'しょうご', meaning: '정오 (낮 12시)' }
+      ]},
+
+      // [3] 자연/방위 (18자)
+      { id: 34, kanji: '山', meaning: '뫼 산', category: '자연/방위', strokes: 3, on: 'サン (산)', kun: 'やま (야마)', speech: 'やま', words: [
+        { word: '山', reading: 'やま', meaning: '산' },
+        { word: '富士山', reading: 'ふじさん', meaning: '후지산' },
+        { word: '火山', reading: 'かざん', meaning: '화산' }
+      ]},
+      { id: 35, kanji: '川', meaning: '내 천', category: '자연/방위', strokes: 3, on: 'セン (센)', kun: 'かわ (카와)', speech: 'かわ', words: [
+        { word: '川', reading: 'かわ', meaning: '강, 하천' },
+        { word: '小川', reading: 'おがわ', meaning: '시냇물' },
+        { word: '川口', reading: 'かわぐち', meaning: '강 어귀' }
+      ]},
+      { id: 36, kanji: '田', meaning: '밭 전', category: '자연/방위', strokes: 5, on: 'デン (덴)', kun: 'た (타)', speech: 'たんぼ', words: [
+        { word: '田んぼ', reading: 'たんぼ', meaning: '논' },
+        { word: '田中', reading: 'たなか', meaning: '다나카 (성씨)' },
+        { word: '水田', reading: 'すいでん', meaning: '논, 수전' }
+      ]},
+      { id: 37, kanji: '天', meaning: '하늘 천', category: '자연/방위', strokes: 4, on: 'テン (텐)', kun: 'あめ · あま (아메·아마)', speech: 'てんき', words: [
+        { word: '天気', reading: 'てんき', meaning: '날씨' },
+        { word: '天国', reading: 'てんごく', meaning: '천국' },
+        { word: '天才', reading: 'てんさい', meaning: '천재' }
+      ]},
+      { id: 38, kanji: '気', meaning: '기운 기', category: '자연/방위', strokes: 6, on: 'キ · ケ (키·케)', kun: '없음', speech: 'げんき', words: [
+        { word: '元気', reading: 'げんき', meaning: '건강함, 기운찬' },
+        { word: '天気', reading: 'てんき', meaning: '날씨' },
+        { word: '気持ち', reading: 'きもち', meaning: '기분, 마음' }
+      ]},
+      { id: 39, kanji: '雨', meaning: '비 우', category: '자연/방위', strokes: 8, on: 'ウ (우)', kun: 'あめ · あま (아메·아마)', speech: 'あめ', words: [
+        { word: '雨', reading: 'あめ', meaning: '비' },
+        { word: '大雨', reading: 'おおあめ', meaning: '큰비, 폭우' },
+        { word: '雨天', reading: 'うてん', meaning: '우천' }
+      ]},
+      { id: 40, kanji: '空', meaning: '빌 공 / 하늘 공', category: '자연/방위', strokes: 8, on: 'クウ (쿠)', kun: 'そら · あ(く) · から (소라·아쿠·카라)', speech: 'そら', words: [
+        { word: '空', reading: 'そら', meaning: '하늘' },
+        { word: '空港', reading: 'くうこう', meaning: '공항' },
+        { word: '空気', reading: 'くうき', meaning: '공기' }
+      ]},
+      { id: 41, kanji: '上', meaning: '위 상', category: '자연/방위', strokes: 3, on: 'ジョウ (죠)', kun: 'うえ · あ(がる) · のぼ(る) (우에·아가루·노보루)', speech: 'うえ', words: [
+        { word: '上', reading: 'うえ', meaning: '위' },
+        { word: '上手', reading: 'じょうず', meaning: '잘함, 능숙함' },
+        { word: '上がる', reading: 'あがる', meaning: '오르다' }
+      ]},
+      { id: 42, kanji: '下', meaning: '아래 하', category: '자연/방위', strokes: 3, on: 'カ · ゲ (카·게)', kun: 'した · さ(がる) · くだ(さい) (시타·사가루·쿠다사이)', speech: 'した', words: [
+        { word: '下', reading: 'した', meaning: '아래' },
+        { word: '下手', reading: 'へた', meaning: '서툼, 못함' },
+        { word: '地下鉄', reading: 'ちかてつ', meaning: '지하철' }
+      ]},
+      { id: 43, kanji: '左', meaning: '왼 좌', category: '자연/방위', strokes: 5, on: 'サ (사)', kun: 'ひだり (히다리)', speech: 'ひだり', words: [
+        { word: '左', reading: 'ひだり', meaning: '왼쪽' },
+        { word: '左手', reading: 'ひだりて', meaning: '왼손' },
+        { word: '左側', reading: 'ひだりがわ', meaning: '왼쪽 편' }
+      ]},
+      { id: 44, kanji: '右', meaning: '오른 우', category: '자연/방위', strokes: 5, on: 'ウ · ユウ (우·유)', kun: 'みぎ (미기)', speech: 'みぎ', words: [
+        { word: '右', reading: 'みぎ', meaning: '오른쪽' },
+        { word: '右手', reading: 'みぎて', meaning: '오른손' },
+        { word: '左右', reading: 'さゆう', meaning: '좌우' }
+      ]},
+      { id: 45, kanji: '中', meaning: '가운데 중', category: '자연/방위', strokes: 4, on: 'チュウ (츄)', kun: 'なか (나카)', speech: 'なか', words: [
+        { word: '中', reading: 'なか', meaning: '안, 속, 가운데' },
+        { word: '中国', reading: 'ちゅうごく', meaning: '중국' },
+        { word: '一日中', reading: 'いちにちじゅう', meaning: '하루 종일' }
+      ]},
+      { id: 46, kanji: '外', meaning: '바깥 외', category: '자연/방위', strokes: 5, on: 'ガイ · ゲ (가이·게)', kun: 'そと · ほか · はず(す) (소토·호카·하즈스)', speech: 'そと', words: [
+        { word: '外', reading: 'そと', meaning: '밖, 바깥' },
+        { word: '外国', reading: 'がいこく', meaning: '외국' },
+        { word: '外国人', reading: 'がいこくじん', meaning: '외국인' }
+      ]},
+      { id: 47, kanji: '東', meaning: '동녘 동', category: '자연/방위', strokes: 8, on: 'トウ (토우)', kun: 'ひがし (히가시)', speech: 'ひがし', words: [
+        { word: '東', reading: 'ひがし', meaning: '동쪽' },
+        { word: '東京', reading: 'とうきょう', meaning: '도쿄' },
+        { word: '東口', reading: 'ひがしぐち', meaning: '동쪽 출구' }
+      ]},
+      { id: 48, kanji: '西', meaning: '서녘 서', category: '자연/방위', strokes: 6, on: 'セイ · サイ (세이·사이)', kun: 'にし (니시)', speech: 'にし', words: [
+        { word: '西', reading: 'にし', meaning: '서쪽' },
+        { word: '西口', reading: 'にしぐち', meaning: '서쪽 출구' },
+        { word: '東西', reading: 'とうざい', meaning: '동서' }
+      ]},
+      { id: 49, kanji: '南', meaning: '남녘 남', category: '자연/방위', strokes: 9, on: 'ナン (난)', kun: 'みなみ (미나미)', speech: 'みなみ', words: [
+        { word: '南', reading: 'みなみ', meaning: '남쪽' },
+        { word: '南口', reading: 'みなみぐち', meaning: '남쪽 출구' },
+        { word: '南国', reading: 'なんごく', meaning: '남국' }
+      ]},
+      { id: 50, kanji: '北', meaning: '북녘 북', category: '자연/방위', strokes: 5, on: 'ホク (호쿠)', kun: 'きた (키타)', speech: 'きた', words: [
+        { word: '北', reading: 'きた', meaning: '북쪽' },
+        { word: '北海道', reading: 'ほっかいどう', meaning: '홋카이도' },
+        { word: '北口', reading: 'きたぐち', meaning: '북쪽 출구' }
+      ]},
+      { id: 51, kanji: '国', meaning: '나라 국', category: '자연/방위', strokes: 8, on: 'コク (코쿠)', kun: 'くに (쿠니)', speech: 'くに', words: [
+        { word: '国', reading: 'くに', meaning: '나라, 국가' },
+        { word: '韓国', reading: 'かんこく', meaning: '한국' },
+        { word: '外国', reading: 'がいこく', meaning: '외국' }
+      ]},
+
+      // [4] 사람/신체 (13자)
+      { id: 52, kanji: '人', meaning: '사람 인', category: '사람/신체', strokes: 2, on: 'ジン · ニン (진·닌)', kun: 'ひと (히토)', speech: 'ひと', words: [
+        { word: '人', reading: 'ひと', meaning: '사람' },
+        { word: '日本人', reading: 'にほんじん', meaning: '일본인' },
+        { word: '三人', reading: 'さんにん', meaning: '세 사람' }
+      ]},
+      { id: 53, kanji: '男', meaning: '사내 남', category: '사람/신체', strokes: 7, on: 'ダン · ナン (단·난)', kun: 'おとこ (오토코)', speech: 'おとこ', words: [
+        { word: '男', reading: 'おとこ', meaning: '남자' },
+        { word: '男の人', reading: 'おとこのひと', meaning: '남자 사람' },
+        { word: '男子', reading: 'だんし', meaning: '남자(학생)' }
+      ]},
+      { id: 54, kanji: '女', meaning: '계집 녀', category: '사람/신체', strokes: 3, on: 'ジョ · ニョ (죠·뇨)', kun: 'おんな (온나)', speech: 'おんな', words: [
+        { word: '女', reading: 'おんな', meaning: '여자' },
+        { word: '女の人', reading: 'おんなのひと', meaning: '여자 사람' },
+        { word: '女の子', reading: 'おんなのこ', meaning: '여자아이' }
+      ]},
+      { id: 55, kanji: '子', meaning: '아들 자 / 아이 자', category: '사람/신체', strokes: 3, on: 'シ · ス (시·스)', kun: 'こ (코)', speech: 'こども', words: [
+        { word: '子ども', reading: 'こども', meaning: '어린이, 아이' },
+        { word: '男の子', reading: 'おとこのこ', meaning: '남자아이' },
+        { word: '椅子', reading: 'いす', meaning: '의자' }
+      ]},
+      { id: 56, kanji: '母', meaning: '어미 모', category: '사람/신체', strokes: 5, on: 'ボ (보)', kun: 'はは (하하)', speech: 'おかあさん', words: [
+        { word: '母', reading: 'はは', meaning: '(나의) 어머니' },
+        { word: 'お母さん', reading: 'おかあさん', meaning: '어머니 (높임말)' },
+        { word: '母国', reading: 'ぼこく', meaning: '모국' }
+      ]},
+      { id: 57, kanji: '父', meaning: '아비 부', category: '사람/신체', strokes: 4, on: 'フ (후)', kun: 'ちち (치치)', speech: 'おとうさん', words: [
+        { word: '父', reading: 'ちち', meaning: '(나의) 아버지' },
+        { word: 'お父さん', reading: 'おとうさん', meaning: '아버지 (높임말)' },
+        { word: '父母', reading: 'ふぼ', meaning: '부모' }
+      ]},
+      { id: 58, kanji: '友', meaning: '벗 우', category: '사람/신체', strokes: 4, on: 'ユウ (유)', kun: 'とも (토모)', speech: 'ともだち', words: [
+        { word: '友達', reading: 'ともだち', meaning: '친구' },
+        { word: '友人', reading: 'ゆうじん', meaning: '친구, 벗' },
+        { word: '親友', reading: 'しんゆう', meaning: '절친한 친구' }
+      ]},
+      { id: 59, kanji: '目', meaning: '눈 목', category: '사람/신체', strokes: 5, on: 'モク · ボク (모쿠·보쿠)', kun: 'め (메)', speech: 'め', words: [
+        { word: '目', reading: 'め', meaning: '눈' },
+        { word: '一日目', reading: 'いちにちめ', meaning: '첫째 날' },
+        { word: '目的', reading: 'もくてき', meaning: '목적' }
+      ]},
+      { id: 60, kanji: '耳', meaning: '귀 이', category: '사람/신체', strokes: 6, on: 'ジ (지)', kun: 'みみ (미미)', speech: 'みみ', words: [
+        { word: '耳', reading: 'みみ', meaning: '귀' },
+        { word: '耳鼻科', reading: 'じびか', meaning: '이비인후과' }
+      ]},
+      { id: 61, kanji: '口', meaning: '입 구', category: '사람/신체', strokes: 3, on: 'コウ · ク (코우·쿠)', kun: 'くち (쿠치)', speech: 'くち', words: [
+        { word: '口', reading: 'くち', meaning: '입' },
+        { word: '入口', reading: 'いりぐち', meaning: '입구' },
+        { word: '出口', reading: 'でぐち', meaning: '출구' }
+      ]},
+      { id: 62, kanji: '手', meaning: '손 수', category: '사람/신체', strokes: 4, on: 'シュ (슈)', kun: 'て (테)', speech: 'て', words: [
+        { word: '手', reading: 'て', meaning: '손' },
+        { word: '手紙', reading: 'てがみ', meaning: '편지' },
+        { word: '上手', reading: 'じょうず', meaning: '잘함, 능숙함' }
+      ]},
+      { id: 63, kanji: '足', meaning: '발 족', category: '사람/신체', strokes: 7, on: 'ソク (소쿠)', kun: 'あし · た(りる) (아시·타리루)', speech: 'あし', words: [
+        { word: '足', reading: 'あし', meaning: '발, 다리' },
+        { word: '足りる', reading: 'たりる', meaning: '충분하다, 족하다' },
+        { word: '一足', reading: 'いっそく', meaning: '한 켤레' }
+      ]},
+      { id: 64, kanji: '力', meaning: '힘 력', category: '사람/신체', strokes: 2, on: 'リョク · リキ (료쿠·리키)', kun: 'ちから (치카라)', speech: 'ちから', words: [
+        { word: '力', reading: 'ちから', meaning: '힘' },
+        { word: '努力', reading: 'どりょく', meaning: '노력' },
+        { word: '水力', reading: 'すいりょく', meaning: '수력' }
+      ]},
+
+      // [5] 동작/상태/사물 (32자)
+      { id: 65, kanji: '大', meaning: '큰 대', category: '동작/상태/사물', strokes: 3, on: 'ダイ · タイ (다이·타이)', kun: 'おお(きい) (오오키이)', speech: 'おおきい', words: [
+        { word: '大きい', reading: 'おおきい', meaning: '크다' },
+        { word: '大学', reading: 'だいがく', meaning: '대학교' },
+        { word: '大切', reading: 'たいせつ', meaning: '소중함, 중요함' }
+      ]},
+      { id: 66, kanji: '小', meaning: '작을 소', category: '동작/상태/사물', strokes: 3, on: 'ショウ (쇼)', kun: 'ちい(さい) · こ (치이사이·코)', speech: 'ちいさい', words: [
+        { word: '小さい', reading: 'ちいさい', meaning: '작다' },
+        { word: '小学校', reading: 'しょうがっこう', meaning: '초등학교' },
+        { word: '小鳥', reading: 'ことり', meaning: '작은 새' }
+      ]},
+      { id: 67, kanji: '高', meaning: '높을 고 / 비쌀 고', category: '동작/상태/사물', strokes: 10, on: 'コウ (코우)', kun: 'たか(い) (타카이)', speech: 'たかい', words: [
+        { word: '高い', reading: 'たかい', meaning: '높다, 비싸다' },
+        { word: '高校', reading: 'こうこう', meaning: '고등학교' },
+        { word: '最高', reading: 'さいこう', meaning: '최고' }
+      ]},
+      { id: 68, kanji: '安', meaning: '편안 안 / 쌀 안', category: '동작/상태/사물', strokes: 6, on: 'アン (안)', kun: 'やす(い) (야스이)', speech: 'やすい', words: [
+        { word: '安い', reading: 'やすい', meaning: '(값이) 싸다' },
+        { word: '安心', reading: 'あんしん', meaning: '안심' },
+        { word: '安全', reading: 'あんぜん', meaning: '안전' }
+      ]},
+      { id: 69, kanji: '新', meaning: '새 신', category: '동작/상태/사물', strokes: 13, on: 'シン (신)', kun: 'あたら(しい) · あら(た) (아타라시이·아라타)', speech: 'あたらしい', words: [
+        { word: '新しい', reading: 'あたらしい', meaning: '새롭다' },
+        { word: '新聞', reading: 'しんぶん', meaning: '신문' },
+        { word: '新年', reading: 'しんねん', meaning: '신년, 새해' }
+      ]},
+      { id: 70, kanji: '古', meaning: '옛 고', category: '동작/상태/사물', strokes: 5, on: 'コ (코)', kun: 'ふる(い) (후루이)', speech: 'ふるい', words: [
+        { word: '古い', reading: 'ふるい', meaning: '오래되다, 낡다' },
+        { word: '中古', reading: 'ちゅうこ', meaning: '중고' },
+        { word: '古本', reading: 'ふるほん', meaning: '헌책' }
+      ]},
+      { id: 71, kanji: '長', meaning: '긴 장 / 우두머리 장', category: '동작/상태/사물', strokes: 8, on: 'チョウ (쵸)', kun: 'なが(い) (나가이)', speech: 'ながい', words: [
+        { word: '長い', reading: 'ながい', meaning: '길다' },
+        { word: '社長', reading: 'しゃちょう', meaning: '사장' },
+        { word: '校長', reading: 'こうちょう', meaning: '교장' }
+      ]},
+      { id: 72, kanji: '多', meaning: '많을 다', category: '동작/상태/사물', strokes: 6, on: 'タ (타)', kun: 'おお(い) (오오이)', speech: 'おおい', words: [
+        { word: '多い', reading: 'おおい', meaning: '많다' },
+        { word: '多分', reading: 'たぶん', meaning: '아마도' },
+        { word: '多少', reading: 'たしょう', meaning: '다소' }
+      ]},
+      { id: 73, kanji: '少', meaning: '적을 소', category: '동작/상태/사물', strokes: 4, on: 'ショウ (쇼)', kun: 'すく(ない) · すこ(し) (스쿠나이·스코시)', speech: 'すこし', words: [
+        { word: '少ない', reading: 'すくない', meaning: '적다' },
+        { word: '少し', reading: 'すこし', meaning: '조금' },
+        { word: '少年', reading: 'しょうねん', meaning: '소년' }
+      ]},
+      { id: 74, kanji: '白', meaning: '흰 백', category: '동작/상태/사물', strokes: 5, on: 'ハク · ビャク (하쿠·뱌쿠)', kun: 'しろ · しろ(い) (시로·시로이)', speech: 'しろい', words: [
+        { word: '白い', reading: 'しろい', meaning: '하얗다' },
+        { word: '白', reading: 'しろ', meaning: '흰색' },
+        { word: '面白い', reading: 'おもしろい', meaning: '재미있다' }
+      ]},
+      { id: 75, kanji: '行', meaning: '갈 행', category: '동작/상태/사물', strokes: 6, on: 'コウ · ギョウ (코우·교)', kun: 'い(く) · おこな(う) (이쿠·오코나우)', speech: 'いきます', words: [
+        { word: '行く', reading: 'いく', meaning: '가다' },
+        { word: '旅行', reading: 'りょこう', meaning: '여행' },
+        { word: '銀行', reading: 'ぎんこう', meaning: '은행' }
+      ]},
+      { id: 76, kanji: '食', meaning: '밥 식 / 먹을 식', category: '동작/상태/사물', strokes: 9, on: 'ショク (쇼쿠)', kun: 'た(べる) (타베루)', speech: 'たべます', words: [
+        { word: '食べる', reading: 'たべる', meaning: '먹다' },
+        { word: '食事', reading: 'しょくじ', meaning: '식사' },
+        { word: '食堂', reading: 'しょくどう', meaning: '식당' }
+      ]},
+      { id: 77, kanji: '飲', meaning: '마실 음', category: '동작/상태/사물', strokes: 12, on: 'イン (인)', kun: 'の(む) (노무)', speech: 'のみます', words: [
+        { word: '飲む', reading: 'のむ', meaning: '마시다' },
+        { word: '飲み物', reading: 'のみもの', meaning: '음료수, 마실 것' },
+        { word: '飲食店', reading: 'いんしょくてん', meaning: '음식점' }
+      ]},
+      { id: 78, kanji: '見', meaning: '볼 견', category: '동작/상태/사물', strokes: 7, on: 'ケン (켄)', kun: 'み(る) · み(える) (미루·미에루)', speech: 'みます', words: [
+        { word: '見る', reading: 'みる', meaning: '보다' },
+        { word: '見せる', reading: 'みせる', meaning: '보여주다' },
+        { word: '見学', reading: 'けんがく', meaning: '견학' }
+      ]},
+      { id: 79, kanji: '聞', meaning: '들을 문', category: '동작/상태/사물', strokes: 14, on: 'ブン · モン (분·몬)', kun: 'き(く) (키쿠)', speech: 'ききます', words: [
+        { word: '聞く', reading: 'きく', meaning: '듣다, 묻다' },
+        { word: '新聞', reading: 'しんぶん', meaning: '신문' },
+        { word: '聞こえる', reading: 'きこえる', meaning: '들리다' }
+      ]},
+      { id: 80, kanji: '読', meaning: '읽을 독', category: '동작/상태/사물', strokes: 14, on: 'ドク (도쿠)', kun: 'よ(む) (요무)', speech: 'よみます', words: [
+        { word: '読む', reading: 'よむ', meaning: '읽다' },
+        { word: '読書', reading: 'どくしょ', meaning: '독서' }
+      ]},
+      { id: 81, kanji: '書', meaning: '쓸 서', category: '동작/상태/사물', strokes: 10, on: 'ショ (쇼)', kun: 'か(く) (카쿠)', speech: 'かきます', words: [
+        { word: '書く', reading: 'かく', meaning: '쓰다, 적다' },
+        { word: '辞書', reading: 'じしょ', meaning: '사전' },
+        { word: '図書館', reading: 'としょかん', meaning: '도서관' }
+      ]},
+      { id: 82, kanji: '話', meaning: '말씀 화', category: '동작/상태/사물', strokes: 13, on: 'ワ (와)', kun: 'はな(す) · はなし (하나스·하나시)', speech: 'はなします', words: [
+        { word: '話す', reading: 'はなす', meaning: '이야기하다, 말하다' },
+        { word: '話', reading: 'はなし', meaning: '이야기' },
+        { word: '電話', reading: 'でんわ', meaning: '전화' }
+      ]},
+      { id: 83, kanji: '買', meaning: '살 매', category: '동작/상태/사물', strokes: 12, on: 'バイ (바이)', kun: 'か(う) (카우)', speech: 'かいます', words: [
+        { word: '買う', reading: 'かう', meaning: '사다' },
+        { word: '買い物', reading: 'かいもの', meaning: '쇼핑, 장보기' },
+        { word: '売買', reading: 'ばいばい', meaning: '매매' }
+      ]},
+      { id: 84, kanji: '出', meaning: '날 출', category: '동작/상태/사물', strokes: 5, on: 'シュツ (슈츠)', kun: 'で(る) · だ(す) (데루·다스)', speech: 'でます', words: [
+        { word: '出る', reading: 'でる', meaning: '나가다, 나오다' },
+        { word: '出す', reading: 'だす', meaning: '내다, 꺼내다' },
+        { word: '出口', reading: 'でぐち', meaning: '출구' }
+      ]},
+      { id: 85, kanji: '入', meaning: '들 입', category: '동작/상태/사물', strokes: 2, on: 'ニュウ (뉴)', kun: 'はい(る) · い(れる) (하이루·이레루)', speech: 'はいります', words: [
+        { word: '入る', reading: 'はいる', meaning: '들어가다, 들어오다' },
+        { word: '入れる', reading: 'いれる', meaning: '넣다' },
+        { word: '入口', reading: 'いりぐち', meaning: '입구' }
+      ]},
+      { id: 86, kanji: '休', meaning: '쉴 휴', category: '동작/상태/사물', strokes: 6, on: 'キュウ (큐)', kun: 'やす(む) · やす(み) (야스무·야스미)', speech: 'やすみます', words: [
+        { word: '休む', reading: 'やすむ', meaning: '쉬다, 결석하다' },
+        { word: '休み', reading: 'やすみ', meaning: '휴식, 휴일' },
+        { word: '夏休み', reading: 'なつやすみ', meaning: '여름방학' }
+      ]},
+      { id: 87, kanji: '立', meaning: '설 립', category: '동작/상태/사물', strokes: 5, on: 'リツ (리츠)', kun: 'た(つ) (타츠)', speech: 'たちます', words: [
+        { word: '立つ', reading: 'たつ', meaning: '서다, 일어서다' },
+        { word: '国立', reading: 'こくりつ', meaning: '국립' },
+        { word: '立派', reading: 'りっぱ', meaning: '훌륭함' }
+      ]},
+      { id: 88, kanji: '生', meaning: '날 생 / 살 생', category: '동작/상태/사물', strokes: 5, on: 'セイ · ショウ (세이·쇼)', kun: 'い(きる) · う(まれる) (이키루·우마레루)', speech: 'がくせい', words: [
+        { word: '学生', reading: 'がくせい', meaning: '학생' },
+        { word: '先生', reading: 'せんせい', meaning: '선생님' },
+        { word: '生まれる', reading: 'うまれる', meaning: '태어나다' }
+      ]},
+      { id: 89, kanji: '学', meaning: '배울 학', category: '동작/상태/사물', strokes: 8, on: 'ガク (가쿠)', kun: 'まな(ぶ) (마나부)', speech: 'がっこう', words: [
+        { word: '学校', reading: 'がっこう', meaning: '학교' },
+        { word: '学生', reading: 'がくせい', meaning: '학생' },
+        { word: '大学', reading: 'だいがく', meaning: '대학교' }
+      ]},
+      { id: 90, kanji: '校', meaning: '학교 교', category: '동작/상태/사물', strokes: 10, on: 'コウ (코우)', kun: '없음', speech: 'がっこう', words: [
+        { word: '学校', reading: 'がっこう', meaning: '학교' },
+        { word: '高校', reading: 'こうこう', meaning: '고등학교' },
+        { word: '校長', reading: 'こうちょう', meaning: '교장' }
+      ]},
+      { id: 91, kanji: '駅', meaning: '역 역', category: '동작/상태/사물', strokes: 14, on: 'エキ (에키)', kun: '없음', speech: 'えき', words: [
+        { word: '駅', reading: 'えき', meaning: '역 (기차역/전철역)' },
+        { word: '駅前', reading: 'えきまえ', meaning: '역 앞' },
+        { word: '駅員', reading: 'えきいん', meaning: '역무원' }
+      ]},
+      { id: 92, kanji: '道', meaning: '길 도', category: '동작/상태/사물', strokes: 12, on: 'ドウ (도우)', kun: 'みち (미치)', speech: 'みち', words: [
+        { word: '道', reading: 'みち', meaning: '길, 도로' },
+        { word: '歩道', reading: 'ほどう', meaning: '보도, 인도' },
+        { word: '書道', reading: 'しょどう', meaning: '서예' }
+      ]},
+      { id: 93, kanji: '車', meaning: '수레 차', category: '동작/상태/사물', strokes: 7, on: 'シャ (샤)', kun: 'くるま (쿠루마)', speech: 'くるま', words: [
+        { word: '車', reading: 'くるま', meaning: '자동차, 차' },
+        { word: '電車', reading: 'でんしゃ', meaning: '전철' },
+        { word: '自転車', reading: 'じてんしゃ', meaning: '자전거' }
+      ]},
+      { id: 94, kanji: '電', meaning: '번개 전', category: '동작/상태/사물', strokes: 13, on: 'デン (덴)', kun: '없음', speech: 'でんしゃ', words: [
+        { word: '電車', reading: 'でんしゃ', meaning: '전철' },
+        { word: '電話', reading: 'でんわ', meaning: '전화' },
+        { word: '電気', reading: 'でんき', meaning: '전기, 전등' }
+      ]},
+      { id: 95, kanji: '本', meaning: '근본 본 / 책 본', category: '동작/상태/사물', strokes: 5, on: 'ホン (혼)', kun: 'もと (모토)', speech: 'ほん', words: [
+        { word: '本', reading: 'ほん', meaning: '책' },
+        { word: '日本', reading: 'にほん', meaning: '일본' },
+        { word: '本屋', reading: 'ほんや', meaning: '서점' }
+      ]},
+      { id: 96, kanji: '何', meaning: '무엇 하', category: '동작/상태/사물', strokes: 7, on: 'カ (카)', kun: 'なに · なん (나니·난)', speech: 'なに', words: [
+        { word: '何', reading: 'なに', meaning: '무엇, 뭐' },
+        { word: '何時', reading: 'なんじ', meaning: '몇 시' },
+        { word: '何人', reading: 'なんにん', meaning: '몇 명' }
+      ]}
+    ];
+
+    // 중복 제거된 N5 핵심 한자 단어 풀 자동 생성 (1~4글자 실전 어휘)
+    const WORD_POOL = (() => {
+      const seen = new Set();
+      const list = [];
+      KANJI_DATA.forEach(k => {
+        k.words.forEach(w => {
+          if (!seen.has(w.word) && [...w.word].length <= 4) {
+            seen.add(w.word);
+            list.push({
+              id: `w_${list.length + 1}`,
+              word: w.word,
+              reading: w.reading,
+              meaning: w.meaning,
+              parentKanjiId: k.id,
+              parentKanji: k.kanji,
+              category: k.category
+            });
+          }
+        });
+      });
+      return list;
+    })();
+
+    // 글자별 예상 획수 테이블 (정밀 획수 검증용)
+    const KANJI_STROKE_MAP = {};
+    KANJI_DATA.forEach(k => { KANJI_STROKE_MAP[k.kanji] = k.strokes; });
+    const KANA_STROKE_MAP = {
+      'つ': 1, 'て': 1, 'し': 1, 'く': 1, 'へ': 1, 'そ': 1, 'の': 1, 'ひ': 1, 'る': 1, 'ろ': 1, 'ん': 1,
+      'い': 2, 'う': 2, 'こ': 2, 'す': 2, 'ち': 2, 'と': 2, 'に': 2, 'ぬ': 2, 'ね': 2, 'み': 2, 'め': 2, 'ゆ': 2, 'よ': 2, 'ら': 2, 'り': 2, 'れ': 2, 'わ': 2,
+      'あ': 3, 'え': 2, 'お': 3, 'か': 3, 'け': 3, 'さ': 3, 'せ': 3, 'た': 4, 'な': 4, 'は': 3, 'ふ': 4, 'ほ': 4, 'ま': 3, 'む': 3, 'も': 3, 'や': 3, 'を': 3,
+      'き': 4, 'が': 5, 'ぎ': 6, 'ぐ': 3, 'げ': 5, 'ご': 4, 'ざ': 5, 'じ': 3, 'ず': 4, 'ぜ': 5, 'ぞ': 3, 'だ': 6, 'ぢ': 4, 'づ': 3, 'で': 3, 'ど': 4, 'ば': 5, 'び': 3, 'ぶ': 6, 'べ': 3, 'ぼ': 6, 'ぱ': 4, 'ぴ': 2, 'ぷ': 5, 'ぺ': 2, 'ぽ': 5
+    };
+
+    function estimateCharStrokes(ch) {
+      if (KANJI_STROKE_MAP[ch]) return KANJI_STROKE_MAP[ch];
+      if (KANA_STROKE_MAP[ch]) return KANA_STROKE_MAP[ch];
+      return 3;
+    }
+
+    // =========================================================================
+    // 2. 전역 상태 관리 & 로컬 스토리지 동기화
+    // =========================================================================
+    const STORAGE_KEY = 'jlpt_n5_memorized_ids_v1';
+    let memorizedIds = new Set();
+
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) memorizedIds = new Set(JSON.parse(saved));
+    } catch (e) {}
+
+    function saveMemorizedState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify([...memorizedIds]));
+      } catch (e) {}
+      updateProgressUI();
+    }
+
+    // 탭 1 상태
+    let currentCategory = '전체';
+    let currentMemFilter = 'all';
+    let currentSearchQuery = '';
+    let activeModalKanjiId = null;
+
+    // 탭 2 (쓰기 연습장) 상태
+    let writeMode = 'kanji';
+    let currentWriteKanjiIdx = 0;
+    let currentWriteWordIdx = 0;
+    let isWriteGuideVisible = true;
+    let penColor = '#4A2C3A';
+    let penWidth = 10;
+    let writeCanvasBoxes = [];
+    let writeStrokeOrderStack = [];
+
+    // 탭 3 (객관식 퀴즈) 상태
+    let quizConfig = {
+      type: 'kanjiToMeaning',
+      scope: 'all',
+      count: 10
+    };
+    let quizQuestions = [];
+    let currentQuizIdx = 0;
+    let quizScore = 0;
+    let quizCombo = 0;
+    let wrongAnswers = [];
+    let quizAnswered = false;
+
+    // 탭 4 (손글씨 받아쓰기 시험) 상태
+    let examConfig = {
+      type: 'kanji',
+      count: 5
+    };
+    let examQuestions = [];
+    let currentExamIdx = 0;
+    let examResults = [];
+    let examCanvasBoxes = [];
+    let examStrokeOrderStack = [];
+    let examGraded = false;
+
+    // =========================================================================
+    // 3. 음성 합성 (Web Speech API - 일본어 발음) & 토스트 알림
+    // =========================================================================
+    function speakJapanese(text) {
+      if (!('speechSynthesis' in window)) {
+        showToast('이 브라우저는 음성 합성을 지원하지 않아요.');
+        return;
+      }
+      try {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'ja-JP';
+        utterance.rate = 0.92;
+        const voices = window.speechSynthesis.getVoices();
+        const jpVoice = voices.find(v => v.lang.includes('ja') || v.lang.includes('JP'));
+        if (jpVoice) utterance.voice = jpVoice;
+        window.speechSynthesis.speak(utterance);
+      } catch (err) {}
+    }
+
+    let toastTimer = null;
+    function showToast(msg) {
+      const box = document.getElementById('toastBox');
+      const text = document.getElementById('toastText');
+      text.textContent = msg;
+      box.classList.remove('hidden');
+      box.classList.add('flex');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        box.classList.add('hidden');
+        box.classList.remove('flex');
+      }, 2200);
+    }
+
+    // =========================================================================
+    // 4. 상단 내비게이션 탭 전환 & 진도율 UI
+    // =========================================================================
+    function switchTab(tabName) {
+      ['list', 'write', 'quiz', 'exam'].forEach(t => {
+        const view = document.getElementById(`view-${t}`);
+        const btn = document.getElementById(`tabBtn-${t}`);
+        if (t === tabName) {
+          view.classList.remove('hidden');
+          btn.className = 'tab-btn cute-pill-btn flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-bold bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-md shadow-pink-200 whitespace-nowrap';
+        } else {
+          view.classList.add('hidden');
+          btn.className = 'tab-btn cute-pill-btn flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-bold bg-pink-50 text-pink-800 hover:bg-pink-100 border border-pink-200/70 whitespace-nowrap';
+        }
+      });
+
+      if (tabName === 'write') {
+        setTimeout(() => renderWriteWorkspace(), 20);
+      } else if (tabName === 'exam') {
+        setTimeout(() => {
+          if (!document.getElementById('examPlayPanel').classList.contains('hidden')) {
+            resizeMultiCanvasBoard(examCanvasBoxes);
+          }
+        }, 20);
+      }
+    }
+
+    function updateProgressUI() {
+      const total = KANJI_DATA.length;
+      const done = memorizedIds.size;
+      const pct = Math.round((done / total) * 100);
+
+      document.getElementById('progressStatText').textContent = `${done} / ${total}자 (${pct}%)`;
+      document.getElementById('mobileProgressText').textContent = `${done}/${total}`;
+      document.getElementById('progressBarFill').style.width = `${pct}%`;
+    }
+
+    function openResetConfirm() {
+      const modal = document.getElementById('resetConfirmModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeResetConfirm() {
+      const modal = document.getElementById('resetConfirmModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function confirmResetProgress() {
+      memorizedIds.clear();
+      saveMemorizedState();
+      renderKanjiGrid();
+      if (!document.getElementById('view-write').classList.contains('hidden')) {
+        renderWriteInfoPanel();
+      }
+      closeResetConfirm();
+      showToast('🍓 모든 암기 기록이 초기화되었어요!');
+    }
+
+    // =========================================================================
+    // 5. TAB 1: 한자 목록 & 단어 학습 모달
+    // =========================================================================
+    function setCategoryFilter(category) {
+      currentCategory = category;
+      document.querySelectorAll('.cat-chip').forEach(btn => {
+        const isMatch = btn.textContent.includes(category === '전체' ? '전체' : category.split('/')[0]);
+        btn.className = isMatch
+          ? 'cat-chip active px-4 py-1.5 rounded-full text-xs font-extrabold bg-pink-500 text-white shadow-xs whitespace-nowrap transition-all'
+          : 'cat-chip px-4 py-1.5 rounded-full text-xs font-bold bg-pink-50 text-pink-800 border border-pink-200/80 hover:bg-pink-100 whitespace-nowrap transition-all';
+      });
+      renderKanjiGrid();
+    }
+
+    function setMemorizedFilter(filterType) {
+      currentMemFilter = filterType;
+      ['all', 'unlearned', 'learned'].forEach(type => {
+        const btn = document.getElementById(`memFilter-${type}`);
+        btn.className = (type === filterType)
+          ? 'mem-filter-btn px-3.5 py-1.5 rounded-full text-xs font-extrabold bg-white text-pink-600 shadow-xs transition-all'
+          : 'mem-filter-btn px-3.5 py-1.5 rounded-full text-xs font-bold text-pink-800/75 hover:text-pink-900 transition-all';
+      });
+      renderKanjiGrid();
+    }
+
+    function filterKanjiList() {
+      const input = document.getElementById('searchInput');
+      currentSearchQuery = input.value.trim().toLowerCase();
+      document.getElementById('clearSearchBtn').classList.toggle('hidden', currentSearchQuery.length === 0);
+      renderKanjiGrid();
+    }
+
+    function clearSearch() {
+      document.getElementById('searchInput').value = '';
+      currentSearchQuery = '';
+      document.getElementById('clearSearchBtn').classList.add('hidden');
+      renderKanjiGrid();
+    }
+
+    function resetAllFilters() {
+      clearSearch();
+      setCategoryFilter('전체');
+      setMemorizedFilter('all');
+    }
+
+    function renderKanjiGrid() {
+      const grid = document.getElementById('kanjiGrid');
+      const emptyState = document.getElementById('emptyListState');
+      const countLabel = document.getElementById('resultCountLabel');
+
+      const filtered = KANJI_DATA.filter(item => {
+        if (currentCategory !== '전체' && item.category !== currentCategory) return false;
+        const isDone = memorizedIds.has(item.id);
+        if (currentMemFilter === 'learned' && !isDone) return false;
+        if (currentMemFilter === 'unlearned' && isDone) return false;
+
+        if (currentSearchQuery) {
+          const q = currentSearchQuery;
+          const inKanji = item.kanji.includes(q);
+          const inMeaning = item.meaning.toLowerCase().includes(q);
+          const inOn = item.on.toLowerCase().includes(q);
+          const inKun = item.kun.toLowerCase().includes(q);
+          const inWords = item.words.some(w => w.word.includes(q) || w.reading.includes(q) || w.meaning.includes(q));
+          if (!inKanji && !inMeaning && !inOn && !inKun && !inWords) return false;
+        }
+        return true;
+      });
+
+      countLabel.textContent = `총 ${filtered.length}개의 한자가 표시됩니다. 카드를 클릭해 단어와 발음을 확인하세요 ✨`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      grid.innerHTML = filtered.map(item => {
+        const isDone = memorizedIds.has(item.id);
+        const shortOn = item.on.split('(')[0].trim();
+        const shortKun = item.kun.split('(')[0].trim();
+
+        return `
+          <div onclick="openKanjiModal(${item.id})"
+               class="cute-bouncy-card group relative bg-white p-4 border-2 ${isDone ? 'border-emerald-300 bg-emerald-50/35' : 'border-pink-200/90'} hover:border-pink-400 cursor-pointer flex flex-col justify-between shadow-xs">
+            <div class="flex items-center justify-between mb-1">
+              <button onclick="event.stopPropagation(); speakJapanese('${item.speech}')"
+                      title="발음 듣기"
+                      class="p-1.5 rounded-full bg-pink-50 text-pink-400 hover:text-pink-600 hover:bg-pink-100 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+              </button>
+
+              <button onclick="event.stopPropagation(); toggleKanjiMemorized(${item.id})"
+                      title="${isDone ? '암기 완료 해제' : '암기 완료 체크'}"
+                      class="w-7 h-7 rounded-full flex items-center justify-center transition-all ${isDone ? 'bg-emerald-400 text-white shadow-xs' : 'bg-pink-50 text-pink-200 hover:bg-pink-100 hover:text-pink-400 border border-pink-200/60'}">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.8" d="M5 13l4 4L19 7"/></svg>
+              </button>
+            </div>
+
+            <div class="text-center my-2">
+              <div class="kanji-font text-5xl font-black text-pink-950 group-hover:text-pink-600 transition-colors leading-tight">
+                ${item.kanji}
+              </div>
+              <div class="text-sm font-extrabold text-pink-900 mt-2 truncate">${item.meaning}</div>
+            </div>
+
+            <div class="pt-2.5 border-t border-pink-100 text-[11px] space-y-0.5">
+              <div class="flex items-center justify-between gap-1 truncate">
+                <span class="px-1.5 py-0.2 bg-pink-100 text-pink-700 font-extrabold rounded-full shrink-0">음</span>
+                <span class="kanji-font text-pink-900/80 font-bold truncate">${shortOn}</span>
+              </div>
+              <div class="flex items-center justify-between gap-1 truncate">
+                <span class="px-1.5 py-0.2 bg-amber-100 text-amber-700 font-extrabold rounded-full shrink-0">훈</span>
+                <span class="kanji-font text-pink-900/80 font-bold truncate">${shortKun}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function toggleKanjiMemorized(id) {
+      if (memorizedIds.has(id)) {
+        memorizedIds.delete(id);
+        showToast('암기 완료가 해제되었어요.');
+      } else {
+        memorizedIds.add(id);
+        showToast('💖 암기 완료로 체크했어요!');
+      }
+      saveMemorizedState();
+      renderKanjiGrid();
+      if (activeModalKanjiId === id) updateModalMemorizeButton(id);
+      if (!document.getElementById('view-write').classList.contains('hidden')) {
+        renderWriteInfoPanel();
+      }
+    }
+
+    function openKanjiModal(id) {
+      const item = KANJI_DATA.find(k => k.id === id);
+      if (!item) return;
+
+      activeModalKanjiId = id;
+      document.getElementById('modalCategory').textContent = item.category;
+      document.getElementById('modalStrokes').textContent = `총 ${item.strokes}획`;
+      document.getElementById('modalChar').textContent = item.kanji;
+      document.getElementById('modalMeaning').textContent = item.meaning;
+      document.getElementById('modalOn').textContent = item.on;
+      document.getElementById('modalKun').textContent = item.kun;
+
+      const wordsContainer = document.getElementById('modalWordsList');
+      wordsContainer.innerHTML = item.words.map(w => `
+        <div class="flex items-center justify-between p-3 bg-pink-50/70 hover:bg-pink-100/70 rounded-2xl border border-pink-200/80 transition-colors">
+          <div>
+            <div class="flex items-baseline gap-2">
+              <span class="kanji-font text-lg font-black text-pink-950">${w.word}</span>
+              <span class="kanji-font text-xs font-extrabold text-pink-600">${w.reading}</span>
+            </div>
+            <p class="text-xs text-pink-900/80 font-medium mt-0.5">${w.meaning}</p>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <button onclick="goToWordWriteFromModal('${w.word}')"
+                    class="cute-pill-btn px-3 py-1.5 bg-white hover:bg-pink-500 text-pink-600 hover:text-white text-[11px] font-extrabold border border-pink-200">
+              단어 쓰기
+            </button>
+            <button onclick="speakJapanese('${w.reading.split('/')[0].trim()}')"
+                    class="p-2 bg-white hover:bg-pink-500 text-pink-500 hover:text-white rounded-full border border-pink-200 shadow-2xs transition-colors"
+                    title="단어 발음 듣기">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+            </button>
+          </div>
+        </div>
+      `).join('');
+
+      updateModalMemorizeButton(id);
+
+      const modal = document.getElementById('kanjiModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function updateModalMemorizeButton(id) {
+      const btn = document.getElementById('modalMemorizeBtn');
+      const isDone = memorizedIds.has(id);
+      if (isDone) {
+        btn.className = 'cute-pill-btn flex-1 py-2.5 px-4 text-xs font-extrabold bg-emerald-500 hover:bg-emerald-600 text-white flex items-center justify-center gap-1.5 shadow-xs';
+        btn.innerHTML = `💖 암기 완료됨 (클릭해 해제)`;
+      } else {
+        btn.className = 'cute-pill-btn flex-1 py-2.5 px-4 text-xs font-extrabold bg-pink-500 hover:bg-pink-600 text-white flex items-center justify-center gap-1.5 shadow-xs';
+        btn.innerHTML = `✨ 암기 완료 체크하기`;
+      }
+    }
+
+    function closeKanjiModal() {
+      const modal = document.getElementById('kanjiModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      activeModalKanjiId = null;
+    }
+
+    function toggleModalKanjiMemorized() {
+      if (activeModalKanjiId !== null) toggleKanjiMemorized(activeModalKanjiId);
+    }
+
+    function speakModalKanji() {
+      const item = KANJI_DATA.find(k => k.id === activeModalKanjiId);
+      if (item) speakJapanese(item.speech);
+    }
+
+    function navigateModalKanji(delta) {
+      if (activeModalKanjiId === null) return;
+      const idx = KANJI_DATA.findIndex(k => k.id === activeModalKanjiId);
+      const nextIdx = (idx + delta + KANJI_DATA.length) % KANJI_DATA.length;
+      openKanjiModal(KANJI_DATA[nextIdx].id);
+    }
+
+    function goToWriteFromModal() {
+      const id = activeModalKanjiId;
+      closeKanjiModal();
+      const idx = KANJI_DATA.findIndex(k => k.id === id);
+      writeMode = 'kanji';
+      if (idx !== -1) currentWriteKanjiIdx = idx;
+      switchTab('write');
+    }
+
+    function goToWordWriteFromModal(wordStr) {
+      closeKanjiModal();
+      const wIdx = WORD_POOL.findIndex(w => w.word === wordStr);
+      writeMode = 'word';
+      if (wIdx !== -1) currentWriteWordIdx = wIdx;
+      switchTab('write');
+    }
+
+    document.getElementById('kanjiModal').addEventListener('click', (e) => {
+      if (e.target.id === 'kanjiModal') closeKanjiModal();
+    });
+
+    // =========================================================================
+    // 6. 공용 멀티 원고지 캔버스 빌더 & 드로잉 엔진
+    // =========================================================================
+    function createMultiCanvasBoard({ containerId, chars, showGuide, interactive, strokeStackRef }) {
+      const board = document.getElementById(containerId);
+      board.innerHTML = '';
+      const boxes = [];
+      const len = chars.length;
+
+      let sizeClass = 'w-[280px] sm:w-[325px]';
+      let fontSizeClass = 'text-[190px] sm:text-[225px]';
+      if (len === 2) {
+        sizeClass = 'w-[160px] sm:w-[205px]';
+        fontSizeClass = 'text-[112px] sm:text-[142px]';
+      } else if (len === 3) {
+        sizeClass = 'w-[112px] sm:w-[152px]';
+        fontSizeClass = 'text-[78px] sm:text-[106px]';
+      } else if (len >= 4) {
+        sizeClass = 'w-[90px] sm:w-[122px]';
+        fontSizeClass = 'text-[62px] sm:text-[86px]';
+      }
+
+      chars.forEach((ch, idx) => {
+        const boxWrapper = document.createElement('div');
+        boxWrapper.className = 'flex flex-col items-center gap-1.5';
+
+        const cell = document.createElement('div');
+        cell.className = `relative ${sizeClass} aspect-square rounded-[26px] border-2 border-pink-300 shadow-sm shadow-pink-100 overflow-hidden kanji-grid-bg select-none touch-none`;
+
+        // 가이드 워터마크 엘리먼트
+        const guideDiv = document.createElement('div');
+        guideDiv.className = `guide-layer kanji-font absolute inset-0 flex items-center justify-center ${fontSizeClass} font-bold text-pink-200/85 pointer-events-none select-none leading-none transition-opacity ${showGuide ? 'opacity-100' : 'opacity-0'}`;
+        guideDiv.textContent = ch;
+
+        // 채점 오버레이 레이어
+        const overlayDiv = document.createElement('div');
+        overlayDiv.className = `overlay-layer kanji-font absolute inset-0 hidden items-center justify-center ${fontSizeClass} font-bold pointer-events-none select-none leading-none z-20`;
+        overlayDiv.textContent = ch;
+
+        // 실제 드로잉 캔버스
+        const cvs = document.createElement('canvas');
+        cvs.className = 'relative z-10 w-full h-full cursor-crosshair block';
+
+        cell.appendChild(guideDiv);
+        cell.appendChild(overlayDiv);
+        cell.appendChild(cvs);
+        boxWrapper.appendChild(cell);
+
+        if (len > 1) {
+          const subBar = document.createElement('div');
+          subBar.className = 'px-2.5 py-0.5 bg-pink-50 border border-pink-200 rounded-full text-[11px] text-pink-700 font-extrabold';
+          subBar.textContent = `${idx + 1}번째 글자`;
+          boxWrapper.appendChild(subBar);
+        }
+
+        board.appendChild(boxWrapper);
+
+        const ctx = cvs.getContext('2d');
+        const boxObj = {
+          index: idx,
+          char: ch,
+          cell,
+          guideDiv,
+          overlayDiv,
+          canvas: cvs,
+          ctx,
+          strokes: [],
+          isDrawing: false,
+          currentStroke: null,
+          interactive
+        };
+
+        const getPos = (e) => {
+          const rect = cvs.getBoundingClientRect();
+          const clientX = (e.touches && e.touches.length > 0) ? e.touches[0].clientX : e.clientX;
+          const clientY = (e.touches && e.touches.length > 0) ? e.touches[0].clientY : e.clientY;
+          return { x: clientX - rect.left, y: clientY - rect.top };
+        };
+
+        const onStart = (e) => {
+          if (!boxObj.interactive) return;
+          e.preventDefault();
+          boxObj.isDrawing = true;
+          const pos = getPos(e);
+          const effectiveWidth = len >= 3 ? Math.max(5, penWidth - 3) : (len === 2 ? Math.max(6, penWidth - 2) : penWidth);
+          boxObj.currentStroke = { color: penColor, width: effectiveWidth, points: [pos] };
+          drawCanvasDot(ctx, pos, penColor, effectiveWidth);
+        };
+
+        const onMove = (e) => {
+          if (!boxObj.isDrawing || !boxObj.interactive) return;
+          e.preventDefault();
+          const pos = getPos(e);
+          const pts = boxObj.currentStroke.points;
+          const prev = pts[pts.length - 1];
+          pts.push(pos);
+          drawCanvasLine(ctx, prev, pos, boxObj.currentStroke.color, boxObj.currentStroke.width);
+        };
+
+        const onEnd = () => {
+          if (!boxObj.isDrawing) return;
+          boxObj.isDrawing = false;
+          if (boxObj.currentStroke && boxObj.currentStroke.points.length > 0) {
+            boxObj.strokes.push(boxObj.currentStroke);
+            if (strokeStackRef) strokeStackRef.push(idx);
+          }
+          boxObj.currentStroke = null;
+        };
+
+        cvs.addEventListener('mousedown', onStart);
+        cvs.addEventListener('mousemove', onMove);
+        window.addEventListener('mouseup', onEnd);
+
+        cvs.addEventListener('touchstart', onStart, { passive: false });
+        cvs.addEventListener('touchmove', onMove, { passive: false });
+        window.addEventListener('touchend', onEnd);
+
+        boxes.push(boxObj);
+      });
+
+      requestAnimationFrame(() => {
+        resizeMultiCanvasBoard(boxes);
+      });
+
+      return boxes;
+    }
+
+    function drawCanvasDot(ctx, pt, color, width) {
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(pt.x, pt.y, width / 2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    function drawCanvasLine(ctx, p1, p2, color, width) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.beginPath();
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.stroke();
+    }
+
+    function resizeMultiCanvasBoard(boxes) {
+      boxes.forEach(box => {
+        const rect = box.cell.getBoundingClientRect();
+        if (rect.width === 0) return;
+        const dpr = window.devicePixelRatio || 1;
+        box.canvas.width = rect.width * dpr;
+        box.canvas.height = rect.height * dpr;
+        box.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        redrawSingleBox(box);
+      });
+    }
+
+    function redrawSingleBox(box) {
+      const rect = box.cell.getBoundingClientRect();
+      box.ctx.clearRect(0, 0, rect.width, rect.height);
+      box.strokes.forEach(st => {
+        if (st.points.length === 1) {
+          drawCanvasDot(box.ctx, st.points[0], st.color, st.width);
+        } else {
+          for (let i = 1; i < st.points.length; i++) {
+            drawCanvasLine(box.ctx, st.points[i - 1], st.points[i], st.color, st.width);
+          }
+        }
+      });
+    }
+
+    window.addEventListener('resize', () => {
+      if (!document.getElementById('view-write').classList.contains('hidden')) {
+        resizeMultiCanvasBoard(writeCanvasBoxes);
+      }
+      if (!document.getElementById('view-exam').classList.contains('hidden') &&
+          !document.getElementById('examPlayPanel').classList.contains('hidden')) {
+        resizeMultiCanvasBoard(examCanvasBoxes);
+      }
+    });
+
+    // =========================================================================
+    // 7. TAB 2: 한자 & 단어 쓰기 연습장 로직
+    // =========================================================================
+    function switchWriteMode(mode) {
+      writeMode = mode;
+      const btnKanji = document.getElementById('writeModeBtn-kanji');
+      const btnWord = document.getElementById('writeModeBtn-word');
+      if (mode === 'kanji') {
+        btnKanji.className = 'px-4 py-1.5 rounded-full text-xs font-extrabold bg-pink-500 text-white shadow-xs transition-all';
+        btnWord.className = 'px-4 py-1.5 rounded-full text-xs font-extrabold text-pink-800 hover:text-pink-950 transition-all';
+      } else {
+        btnWord.className = 'px-4 py-1.5 rounded-full text-xs font-extrabold bg-pink-500 text-white shadow-xs transition-all';
+        btnKanji.className = 'px-4 py-1.5 rounded-full text-xs font-extrabold text-pink-800 hover:text-pink-950 transition-all';
+      }
+      renderWriteWorkspace();
+    }
+
+    function renderWriteWorkspace() {
+      const select = document.getElementById('writeItemSelect');
+      writeStrokeOrderStack = [];
+
+      if (writeMode === 'kanji') {
+        select.innerHTML = KANJI_DATA.map((item, idx) =>
+          `<option value="${idx}">${idx + 1}. ${item.kanji} (${item.meaning})</option>`
+        ).join('');
+        select.value = currentWriteKanjiIdx;
+
+        const target = KANJI_DATA[currentWriteKanjiIdx];
+        document.getElementById('writeIndexBadge').textContent = `${currentWriteKanjiIdx + 1} / ${KANJI_DATA.length}`;
+        writeCanvasBoxes = createMultiCanvasBoard({
+          containerId: 'writeCanvasBoard',
+          chars: [target.kanji],
+          showGuide: isWriteGuideVisible,
+          interactive: true,
+          strokeStackRef: writeStrokeOrderStack
+        });
+      } else {
+        select.innerHTML = WORD_POOL.map((w, idx) =>
+          `<option value="${idx}">${idx + 1}. ${w.word} (${w.meaning})</option>`
+        ).join('');
+        select.value = currentWriteWordIdx;
+
+        const targetWord = WORD_POOL[currentWriteWordIdx];
+        document.getElementById('writeIndexBadge').textContent = `${currentWriteWordIdx + 1} / ${WORD_POOL.length}`;
+        writeCanvasBoxes = createMultiCanvasBoard({
+          containerId: 'writeCanvasBoard',
+          chars: [...targetWord.word],
+          showGuide: isWriteGuideVisible,
+          interactive: true,
+          strokeStackRef: writeStrokeOrderStack
+        });
+      }
+
+      renderWriteInfoPanel();
+    }
+
+    function renderWriteInfoPanel() {
+      const panel = document.getElementById('writeInfoPanel');
+      if (writeMode === 'kanji') {
+        const item = KANJI_DATA[currentWriteKanjiIdx];
+        const isDone = memorizedIds.has(item.id);
+        panel.innerHTML = `
+          <div class="flex items-start justify-between">
+            <div class="flex items-center gap-3">
+              <span class="kanji-font text-4xl font-black text-pink-950">${item.kanji}</span>
+              <div>
+                <h3 class="cute-title text-xl text-pink-600">${item.meaning}</h3>
+                <p class="text-xs text-pink-700/80 font-bold">${item.category} · 총 ${item.strokes}획</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="speakJapanese('${item.speech}')" class="p-2.5 bg-pink-500 hover:bg-pink-600 text-white rounded-full shadow-sm transition-colors" title="발음 듣기">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+              </button>
+              <button onclick="toggleKanjiMemorized(${item.id})" class="cute-pill-btn px-3.5 py-2 text-xs font-extrabold border ${isDone ? 'bg-emerald-500 text-white border-emerald-500' : 'bg-white text-pink-800 border-pink-200 hover:border-pink-400'}">
+                ${isDone ? '💖 암기 완료' : '암기 체크'}
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2.5">
+            <div class="bg-white p-3 rounded-2xl border border-pink-200/80">
+              <span class="inline-block px-2.5 py-0.5 bg-pink-100 text-pink-700 text-[11px] font-extrabold rounded-full mb-1">음독 (音読み)</span>
+              <p class="text-sm font-bold text-pink-950 kanji-font">${item.on}</p>
+            </div>
+            <div class="bg-white p-3 rounded-2xl border border-pink-200/80">
+              <span class="inline-block px-2.5 py-0.5 bg-amber-100 text-amber-700 text-[11px] font-extrabold rounded-full mb-1">훈독 (訓読み)</span>
+              <p class="text-sm font-bold text-pink-950 kanji-font">${item.kun}</p>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-extrabold text-pink-700 mb-2">🌷 이 한자가 쓰이는 핵심 단어</h4>
+            <div class="space-y-2">
+              ${item.words.map(w => `
+                <div class="flex items-center justify-between p-2.5 bg-white rounded-2xl border border-pink-200/80">
+                  <div>
+                    <span class="kanji-font font-extrabold text-sm text-pink-950 mr-1.5">${w.word}</span>
+                    <span class="kanji-font text-xs text-pink-600 font-bold">${w.reading}</span>
+                    <div class="text-xs text-pink-800/75">${w.meaning}</div>
+                  </div>
+                  <div class="flex items-center gap-1">
+                    <button onclick="goToWordWriteFromModal('${w.word}')" class="cute-pill-btn px-2.5 py-1 bg-pink-100 hover:bg-pink-200 text-pink-700 text-[11px] font-extrabold">써보기</button>
+                    <button onclick="speakJapanese('${w.reading.split('/')[0].trim()}')" class="p-2 text-pink-500 hover:bg-pink-50 rounded-full transition-colors" title="발음 듣기">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                    </button>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      } else {
+        const wItem = WORD_POOL[currentWriteWordIdx];
+        const parentKanji = KANJI_DATA.find(k => k.id === wItem.parentKanjiId);
+        panel.innerHTML = `
+          <div class="flex items-start justify-between">
+            <div>
+              <span class="inline-block px-3 py-0.5 bg-pink-200/80 text-pink-800 text-[11px] font-extrabold rounded-full mb-1.5">🎀 N5 핵심 단어 쓰기 (${[...wItem.word].length}글자)</span>
+              <div class="flex items-baseline gap-2.5">
+                <h3 class="kanji-font text-3xl sm:text-4xl font-black text-pink-950">${wItem.word}</h3>
+                <span class="kanji-font text-base font-extrabold text-pink-600">${wItem.reading}</span>
+              </div>
+              <p class="text-base font-extrabold text-pink-900 mt-1">${wItem.meaning}</p>
+            </div>
+            <button onclick="speakJapanese('${wItem.reading}')" class="p-3 bg-pink-500 hover:bg-pink-600 text-white rounded-full shadow-sm transition-colors" title="단어 발음 듣기">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+            </button>
+          </div>
+
+          <div class="bg-white p-4 rounded-2xl border border-pink-200/80 space-y-2">
+            <div class="text-xs font-extrabold text-pink-600">포함된 대표 한자 정보</div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <span class="kanji-font text-3xl font-black text-pink-600">${parentKanji.kanji}</span>
+                <div>
+                  <div class="text-sm font-extrabold text-pink-950">${parentKanji.meaning}</div>
+                  <div class="kanji-font text-xs text-pink-800/75">음: ${parentKanji.on.split('(')[0].trim()} / 훈: ${parentKanji.kun.split('(')[0].trim()}</div>
+                </div>
+              </div>
+              <button onclick="openKanjiModal(${parentKanji.id})" class="cute-pill-btn px-3.5 py-1.5 bg-pink-100 hover:bg-pink-200 text-pink-800 text-xs font-extrabold">
+                한자 상세
+              </button>
+            </div>
+          </div>
+
+          <div class="p-3.5 bg-white/90 rounded-2xl border border-pink-200 text-xs text-pink-900 leading-relaxed">
+            💡 <strong>학습 팁:</strong> 한자와 히라가나가 결합된 단어는 각 칸의 십자 중심선에 맞춰 균형 있게 쓰는 연습을 해보세요!
+          </div>
+        `;
+      }
+    }
+
+    function selectWriteItemByIndex(idx) {
+      if (writeMode === 'kanji') currentWriteKanjiIdx = Number(idx);
+      else currentWriteWordIdx = Number(idx);
+      renderWriteWorkspace();
+    }
+
+    function prevWriteItem() {
+      if (writeMode === 'kanji') {
+        currentWriteKanjiIdx = (currentWriteKanjiIdx - 1 + KANJI_DATA.length) % KANJI_DATA.length;
+      } else {
+        currentWriteWordIdx = (currentWriteWordIdx - 1 + WORD_POOL.length) % WORD_POOL.length;
+      }
+      renderWriteWorkspace();
+    }
+
+    function nextWriteItem() {
+      if (writeMode === 'kanji') {
+        currentWriteKanjiIdx = (currentWriteKanjiIdx + 1) % KANJI_DATA.length;
+      } else {
+        currentWriteWordIdx = (currentWriteWordIdx + 1) % WORD_POOL.length;
+      }
+      renderWriteWorkspace();
+    }
+
+    function toggleWriteGuide() {
+      isWriteGuideVisible = !isWriteGuideVisible;
+      document.getElementById('toggleGuideText').textContent = isWriteGuideVisible ? '👀 가이드 숨기기' : '👀 가이드 보이기';
+      writeCanvasBoxes.forEach(box => {
+        box.guideDiv.classList.toggle('opacity-0', !isWriteGuideVisible);
+        box.guideDiv.classList.toggle('opacity-100', isWriteGuideVisible);
+      });
+    }
+
+    function undoLastWriteStroke() {
+      while (writeStrokeOrderStack.length > 0) {
+        const lastBoxIdx = writeStrokeOrderStack.pop();
+        const box = writeCanvasBoxes[lastBoxIdx];
+        if (box && box.strokes.length > 0) {
+          box.strokes.pop();
+          redrawSingleBox(box);
+          break;
+        }
+      }
+    }
+
+    function clearAllWriteCanvases() {
+      writeStrokeOrderStack = [];
+      writeCanvasBoxes.forEach(box => {
+        box.strokes = [];
+        redrawSingleBox(box);
+      });
+    }
+
+    function setPenColor(color) {
+      penColor = color;
+      document.querySelectorAll('.pen-color-btn').forEach(btn => {
+        if (btn.dataset.color === color) {
+          btn.classList.add('ring-2', 'ring-offset-2', 'ring-pink-500');
+        } else {
+          btn.classList.remove('ring-2', 'ring-offset-2', 'ring-pink-500');
+        }
+      });
+    }
+
+    function setPenWidth(size) {
+      penWidth = size;
+      document.querySelectorAll('.pen-size-btn').forEach(btn => {
+        btn.className = (Number(btn.dataset.size) === size)
+          ? 'pen-size-btn px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-pink-500 text-white'
+          : 'pen-size-btn px-2.5 py-1 rounded-full text-[11px] font-bold text-pink-800 hover:bg-pink-200/60';
+      });
+    }
+
+    // =========================================================================
+    // 8. TAB 3: 4지선다 객관식 퀴즈 (힌트 숨김 토글 + 한자 단어 퀴즈 포함)
+    // =========================================================================
+    function selectQuizType(type) {
+      quizConfig.type = type;
+      ['kanjiToMeaning', 'meaningToKanji', 'wordToMeaning', 'meaningToWord', 'mixed'].forEach(t => {
+        const btn = document.getElementById(`qType-${t}`);
+        if (t === type) {
+          btn.className = btn.className.replace('border-pink-200 bg-white hover:border-pink-400', 'border-pink-500 bg-pink-50/90 shadow-xs');
+          if (!btn.className.includes('border-pink-500')) {
+            btn.classList.add('border-pink-500', 'bg-pink-50/90');
+          }
+          btn.querySelector('div').className = 'text-xs font-extrabold text-pink-600 mb-1';
+        } else {
+          btn.classList.remove('border-pink-500', 'bg-pink-50/90', 'shadow-xs');
+          btn.classList.add('border-pink-200', 'bg-white', 'hover:border-pink-400');
+          btn.querySelector('div').className = 'text-xs font-extrabold text-pink-950 mb-1';
+        }
+      });
+    }
+
+    function selectQuizScope(scope) {
+      quizConfig.scope = scope;
+      ['all', 'unlearned'].forEach(s => {
+        const btn = document.getElementById(`qScope-${s}`);
+        btn.className = (s === scope)
+          ? 'q-scope-btn py-2.5 px-4 rounded-full border-2 border-pink-500 bg-pink-50 text-xs font-extrabold text-pink-600 transition-all'
+          : 'q-scope-btn py-2.5 px-4 rounded-full border-2 border-pink-200 bg-white text-xs font-bold text-pink-800 hover:border-pink-400 transition-all';
+      });
+    }
+
+    function selectQuizCount(cnt) {
+      quizConfig.count = cnt;
+      [10, 20, 999].forEach(c => {
+        const btn = document.getElementById(`qCount-${c}`);
+        btn.className = (c === cnt)
+          ? 'q-count-btn py-2.5 rounded-full border-2 border-pink-500 bg-pink-50 text-xs font-extrabold text-pink-600 transition-all'
+          : 'q-count-btn py-2.5 rounded-full border-2 border-pink-200 bg-white text-xs font-bold text-pink-800 hover:border-pink-400 transition-all';
+      });
+    }
+
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function buildQuizQuestionsFromPool(customQuestions = null) {
+      if (customQuestions) return customQuestions;
+
+      const allModes = ['kanjiToMeaning', 'meaningToKanji', 'wordToMeaning', 'meaningToWord'];
+      const count = quizConfig.count === 999 ? 40 : quizConfig.count;
+      const generated = [];
+
+      let kanjiPool = quizConfig.scope === 'unlearned'
+        ? KANJI_DATA.filter(k => !memorizedIds.has(k.id))
+        : [...KANJI_DATA];
+      if (kanjiPool.length < 4) kanjiPool = [...KANJI_DATA];
+
+      let wordPool = quizConfig.scope === 'unlearned'
+        ? WORD_POOL.filter(w => !memorizedIds.has(w.parentKanjiId))
+        : [...WORD_POOL];
+      if (wordPool.length < 4) wordPool = [...WORD_POOL];
+
+      const shuffledKanji = shuffleArray(kanjiPool);
+      const shuffledWords = shuffleArray(wordPool);
+
+      for (let i = 0; i < count; i++) {
+        const mode = quizConfig.type === 'mixed'
+          ? allModes[i % allModes.length]
+          : quizConfig.type;
+
+        if (mode === 'kanjiToMeaning' || mode === 'meaningToKanji') {
+          const target = shuffledKanji[i % shuffledKanji.length];
+          const distractors = shuffleArray(KANJI_DATA.filter(k => k.id !== target.id)).slice(0, 3);
+          generated.push({
+            kind: 'kanji',
+            mode,
+            target,
+            options: shuffleArray([target, ...distractors])
+          });
+        } else {
+          const target = shuffledWords[i % shuffledWords.length];
+          const distractors = shuffleArray(WORD_POOL.filter(w => w.word !== target.word && w.meaning !== target.meaning)).slice(0, 3);
+          generated.push({
+            kind: 'word',
+            mode,
+            target,
+            options: shuffleArray([target, ...distractors])
+          });
+        }
+      }
+
+      return shuffleArray(generated);
+    }
+
+    function startQuiz(customRetryList = null) {
+      quizQuestions = buildQuizQuestionsFromPool(customRetryList);
+      currentQuizIdx = 0;
+      quizScore = 0;
+      quizCombo = 0;
+      wrongAnswers = [];
+
+      document.getElementById('quizSetupPanel').classList.add('hidden');
+      document.getElementById('quizResultPanel').classList.add('hidden');
+      document.getElementById('quizPlayPanel').classList.remove('hidden');
+
+      renderQuizQuestion();
+    }
+
+    function renderQuizQuestion() {
+      quizAnswered = false;
+      const q = quizQuestions[currentQuizIdx];
+      const total = quizQuestions.length;
+
+      document.getElementById('quizStepText').textContent = `문제 ${currentQuizIdx + 1} / ${total}`;
+      document.getElementById('quizScoreText').textContent = quizScore;
+      document.getElementById('quizProgressBar').style.width = `${((currentQuizIdx + 1) / total) * 100}%`;
+
+      const comboBadge = document.getElementById('quizComboBadge');
+      if (quizCombo >= 2) {
+        comboBadge.textContent = `🔥 ${quizCombo}연속 정답!`;
+        comboBadge.classList.remove('hidden');
+      } else {
+        comboBadge.classList.add('hidden');
+      }
+
+      const promptEl = document.getElementById('quizQuestionPrompt');
+      const mainEl = document.getElementById('quizQuestionMain');
+      const optionsGrid = document.getElementById('quizOptionsGrid');
+
+      const hintBtn = document.getElementById('quizHintToggleBtn');
+      const hintContent = document.getElementById('quizHintContent');
+      hintBtn.classList.remove('hidden');
+      hintContent.classList.add('hidden');
+
+      if (q.mode === 'kanjiToMeaning') {
+        promptEl.textContent = '다음 한자의 뜻으로 알맞은 것은?';
+        mainEl.className = 'kanji-font text-6xl sm:text-7xl font-black text-pink-950 my-2';
+        mainEl.textContent = q.target.kanji;
+        hintContent.innerHTML = `음독: <strong class="kanji-font text-pink-600">${q.target.on}</strong> &nbsp;|&nbsp; 훈독: <strong class="kanji-font text-amber-600">${q.target.kun}</strong>`;
+
+        optionsGrid.innerHTML = q.options.map(opt => `
+          <button onclick="submitQuizAnswer('${opt.id}')" data-opt-id="${opt.id}"
+                  class="quiz-opt-btn p-4 rounded-3xl border-2 border-pink-200 bg-white hover:border-pink-400 hover:bg-pink-50/60 text-center transition-all">
+            <div class="text-base font-extrabold text-pink-950">${opt.meaning}</div>
+            <div class="quiz-opt-sub hidden kanji-font text-xs text-pink-700/80 mt-1">음: ${opt.on.split('(')[0].trim()} / 훈: ${opt.kun.split('(')[0].trim()}</div>
+          </button>
+        `).join('');
+      } else if (q.mode === 'meaningToKanji') {
+        promptEl.textContent = '다음 뜻에 해당하는 알맞은 한자는?';
+        mainEl.className = 'cute-title text-2xl sm:text-3xl text-pink-600 my-3';
+        mainEl.textContent = q.target.meaning;
+        hintContent.innerHTML = `읽기 힌트 → 음독: <strong class="kanji-font text-pink-600">${q.target.on}</strong> / 훈독: <strong class="kanji-font text-amber-600">${q.target.kun}</strong>`;
+
+        optionsGrid.innerHTML = q.options.map(opt => `
+          <button onclick="submitQuizAnswer('${opt.id}')" data-opt-id="${opt.id}"
+                  class="quiz-opt-btn py-5 px-4 rounded-3xl border-2 border-pink-200 bg-white hover:border-pink-400 hover:bg-pink-50/60 text-center transition-all">
+            <span class="kanji-font text-5xl font-black text-pink-950">${opt.kanji}</span>
+          </button>
+        `).join('');
+      } else if (q.mode === 'wordToMeaning') {
+        promptEl.textContent = '다음 한자 단어의 뜻과 읽기로 알맞은 것은?';
+        mainEl.className = 'kanji-font text-5xl sm:text-6xl font-black text-pink-950 my-2';
+        mainEl.textContent = q.target.word;
+        hintContent.innerHTML = `후리가나(읽기) 힌트: <strong class="kanji-font text-pink-600 text-sm">${q.target.reading}</strong>`;
+
+        optionsGrid.innerHTML = q.options.map(opt => `
+          <button onclick="submitQuizAnswer('${opt.id}')" data-opt-id="${opt.id}"
+                  class="quiz-opt-btn p-4 rounded-3xl border-2 border-pink-200 bg-white hover:border-pink-400 hover:bg-pink-50/60 text-center transition-all">
+            <div class="text-base font-extrabold text-pink-950">${opt.meaning}</div>
+            <div class="quiz-opt-sub hidden kanji-font text-xs text-pink-600 font-extrabold mt-1">${opt.reading}</div>
+          </button>
+        `).join('');
+      } else if (q.mode === 'meaningToWord') {
+        promptEl.textContent = '다음 뜻에 해당하는 알맞은 한자 단어는?';
+        mainEl.className = 'cute-title text-2xl sm:text-3xl text-rose-500 my-3';
+        mainEl.textContent = q.target.meaning;
+        hintContent.innerHTML = `일본어 발음(후리가나) 힌트: <strong class="kanji-font text-pink-600 text-sm">${q.target.reading}</strong>`;
+
+        optionsGrid.innerHTML = q.options.map(opt => `
+          <button onclick="submitQuizAnswer('${opt.id}')" data-opt-id="${opt.id}"
+                  class="quiz-opt-btn py-4 px-4 rounded-3xl border-2 border-pink-200 bg-white hover:border-pink-400 hover:bg-pink-50/60 text-center transition-all">
+            <div class="kanji-font text-3xl font-black text-pink-950">${opt.word}</div>
+            <div class="quiz-opt-sub hidden kanji-font text-xs text-pink-600 font-extrabold mt-1">${opt.reading}</div>
+          </button>
+        `).join('');
+      }
+
+      document.getElementById('quizFeedbackBox').classList.add('hidden');
+    }
+
+    function revealQuizHint() {
+      document.getElementById('quizHintToggleBtn').classList.add('hidden');
+      document.getElementById('quizHintContent').classList.remove('hidden');
+      const q = quizQuestions[currentQuizIdx];
+      if (q) {
+        const speechText = q.kind === 'kanji' ? q.target.speech : q.target.reading;
+        speakJapanese(speechText);
+      }
+    }
+
+    function submitQuizAnswer(selectedIdStr) {
+      if (quizAnswered) return;
+      quizAnswered = true;
+
+      const q = quizQuestions[currentQuizIdx];
+      const targetIdStr = String(q.target.id);
+      const isCorrect = selectedIdStr === targetIdStr;
+
+      document.getElementById('quizHintToggleBtn').classList.add('hidden');
+      document.getElementById('quizHintContent').classList.remove('hidden');
+      document.querySelectorAll('.quiz-opt-sub').forEach(el => el.classList.remove('hidden'));
+
+      const speechText = q.kind === 'kanji' ? q.target.speech : q.target.reading;
+      speakJapanese(speechText);
+
+      document.querySelectorAll('.quiz-opt-btn').forEach(btn => {
+        const optId = btn.dataset.optId;
+        btn.disabled = true;
+        if (optId === targetIdStr) {
+          btn.classList.remove('border-pink-200', 'hover:border-pink-400');
+          btn.classList.add('border-emerald-400', 'bg-emerald-50', 'ring-2', 'ring-emerald-200');
+        } else if (optId === selectedIdStr && !isCorrect) {
+          btn.classList.remove('border-pink-200', 'hover:border-pink-400');
+          btn.classList.add('border-rose-400', 'bg-rose-50');
+        } else {
+          btn.classList.add('opacity-50');
+        }
+      });
+
+      const feedbackBox = document.getElementById('quizFeedbackBox');
+      const feedbackTitle = document.getElementById('quizFeedbackTitle');
+      const feedbackDetail = document.getElementById('quizFeedbackDetail');
+
+      if (isCorrect) {
+        quizScore += 10;
+        quizCombo += 1;
+        document.getElementById('quizScoreText').textContent = quizScore;
+        feedbackBox.className = 'rounded-3xl p-4 sm:p-5 border-2 border-emerald-300 bg-emerald-50/90 text-emerald-950 animate-pop';
+        feedbackTitle.textContent = quizCombo >= 2 ? `🎉 정답입니다! (${quizCombo}연속 콤보!)` : '🎉 정답입니다!';
+      } else {
+        quizCombo = 0;
+        wrongAnswers.push(q);
+        feedbackBox.className = 'rounded-3xl p-4 sm:p-5 border-2 border-rose-300 bg-rose-50/90 text-rose-950 animate-pop';
+        const correctDisp = q.kind === 'kanji' ? `${q.target.kanji} (${q.target.meaning})` : `${q.target.word} [${q.target.reading}] (${q.target.meaning})`;
+        feedbackTitle.textContent = `💦 아쉽습니다! 정답: ${correctDisp}`;
+      }
+
+      if (q.kind === 'kanji') {
+        const sampleWord = q.target.words[0];
+        feedbackDetail.innerHTML = `
+          <strong>${q.target.kanji} (${q.target.meaning})</strong> · 음독: ${q.target.on} / 훈독: ${q.target.kun}<br/>
+          대표 단어: <span class="kanji-font font-extrabold">${sampleWord.word} (${sampleWord.reading})</span> - ${sampleWord.meaning}
+        `;
+      } else {
+        feedbackDetail.innerHTML = `
+          단어: <strong class="kanji-font">${q.target.word} (${q.target.reading})</strong> — ${q.target.meaning} (포함 한자: ${q.target.parentKanji})
+        `;
+      }
+
+      feedbackBox.classList.remove('hidden');
+    }
+
+    function speakCurrentQuizItem() {
+      const q = quizQuestions[currentQuizIdx];
+      if (!q) return;
+      speakJapanese(q.kind === 'kanji' ? q.target.speech : q.target.reading);
+    }
+
+    function nextQuizQuestion() {
+      currentQuizIdx += 1;
+      if (currentQuizIdx < quizQuestions.length) {
+        renderQuizQuestion();
+      } else {
+        showQuizResults();
+      }
+    }
+
+    function resetQuizToSetup() {
+      document.getElementById('quizPlayPanel').classList.add('hidden');
+      document.getElementById('quizResultPanel').classList.add('hidden');
+      document.getElementById('quizSetupPanel').classList.remove('hidden');
+    }
+
+    function showQuizResults() {
+      document.getElementById('quizPlayPanel').classList.add('hidden');
+      document.getElementById('quizResultPanel').classList.remove('hidden');
+
+      const total = quizQuestions.length;
+      const correctCount = total - wrongAnswers.length;
+      const accuracy = Math.round((correctCount / total) * 100);
+
+      document.getElementById('quizFinalScoreTitle').textContent = `${accuracy}점 (${correctCount} / ${total} 정답)`;
+
+      let comment = '조금 더 복습하면 완벽해질 거예요! 오답 노트를 확인해 보세요 🌸';
+      if (accuracy === 100) comment = '완벽합니다! 모든 한자와 단어를 한 번에 맞히셨어요! 🏆';
+      else if (accuracy >= 80) comment = '훌륭해요! JLPT N5 어휘 실력이 매우 탄탄합니다! 👏';
+      else if (accuracy >= 60) comment = '좋아요! 틀린 문제들만 한 번 더 복습해 봅시다. 💪';
+      document.getElementById('quizFinalComment').textContent = comment;
+
+      const wrongSection = document.getElementById('wrongNotesSection');
+      const wrongList = document.getElementById('wrongNotesList');
+      const wrongBadge = document.getElementById('wrongCountBadge');
+
+      if (wrongAnswers.length === 0) {
+        wrongSection.classList.add('hidden');
+      } else {
+        wrongSection.classList.remove('hidden');
+        wrongBadge.textContent = `${wrongAnswers.length}문제`;
+        wrongList.innerHTML = wrongAnswers.map(qItem => {
+          if (qItem.kind === 'kanji') {
+            const item = qItem.target;
+            return `
+              <div class="flex items-center justify-between p-3.5 bg-rose-50/70 rounded-2xl border border-rose-200">
+                <div class="flex items-center gap-3.5">
+                  <div class="w-12 h-12 rounded-2xl bg-white border border-rose-200 flex items-center justify-center kanji-font text-2xl font-black text-pink-950 shrink-0">
+                    ${item.kanji}
+                  </div>
+                  <div>
+                    <div class="text-sm font-extrabold text-pink-950">${item.meaning}</div>
+                    <div class="kanji-font text-xs text-pink-800/80">음: ${item.on.split('(')[0].trim()} / 훈: ${item.kun.split('(')[0].trim()}</div>
+                    <div class="text-[11px] text-pink-600 font-bold mt-0.5">단어: ${item.words[0].word} (${item.words[0].reading}) - ${item.words[0].meaning}</div>
+                  </div>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <button onclick="speakJapanese('${item.speech}')" class="p-2 bg-white hover:bg-pink-50 text-pink-500 rounded-full border border-pink-200" title="발음 듣기">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                  </button>
+                  <button onclick="openKanjiModal(${item.id})" class="cute-pill-btn px-3 py-1.5 bg-white hover:bg-pink-100 text-pink-800 text-xs font-extrabold border border-pink-200">
+                    상세
+                  </button>
+                </div>
+              </div>
+            `;
+          } else {
+            const w = qItem.target;
+            return `
+              <div class="flex items-center justify-between p-3.5 bg-rose-50/70 rounded-2xl border border-rose-200">
+                <div class="flex items-center gap-3.5">
+                  <div class="px-3 h-12 rounded-2xl bg-white border border-rose-200 flex items-center justify-center kanji-font text-lg font-black text-pink-950 shrink-0">
+                    ${w.word}
+                  </div>
+                  <div>
+                    <div class="text-sm font-extrabold text-pink-950">${w.meaning}</div>
+                    <div class="kanji-font text-xs text-pink-600 font-extrabold">읽기: ${w.reading}</div>
+                  </div>
+                </div>
+                <button onclick="speakJapanese('${w.reading}')" class="p-2 bg-white hover:bg-pink-50 text-pink-500 rounded-full border border-pink-200" title="발음 듣기">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                </button>
+              </div>
+            `;
+          }
+        }).join('');
+      }
+    }
+
+    function retryWrongQuestions() {
+      if (wrongAnswers.length === 0) return;
+      startQuiz([...wrongAnswers]);
+    }
+
+    // =========================================================================
+    // 9. TAB 4: 한자 & 단어 손글씨 받아쓰기 시험 + 고정밀 엄격 자동 채점 엔진
+    // =========================================================================
+    function selectExamType(type) {
+      examConfig.type = type;
+      ['kanji', 'word', 'mixed'].forEach(t => {
+        const btn = document.getElementById(`eType-${t}`);
+        if (t === type) {
+          btn.className = 'e-type-btn p-4 rounded-3xl border-2 border-pink-500 bg-pink-50/90 text-left transition-all shadow-xs';
+          btn.querySelector('div').className = 'text-xs font-extrabold text-pink-600 mb-1';
+        } else {
+          btn.className = 'e-type-btn p-4 rounded-3xl border-2 border-pink-200 bg-white hover:border-pink-400 text-left transition-all';
+          btn.querySelector('div').className = 'text-xs font-extrabold text-pink-950 mb-1';
+        }
+      });
+    }
+
+    function selectExamCount(cnt) {
+      examConfig.count = cnt;
+      [5, 10, 15].forEach(c => {
+        const btn = document.getElementById(`eCount-${c}`);
+        btn.className = (c === cnt)
+          ? 'e-count-btn py-2.5 rounded-full border-2 border-pink-500 bg-pink-50 text-xs font-extrabold text-pink-600 transition-all'
+          : 'e-count-btn py-2.5 rounded-full border-2 border-pink-200 bg-white text-xs font-bold text-pink-800 hover:border-pink-400 transition-all';
+      });
+    }
+
+    function buildExamQuestions(customList = null) {
+      if (customList) return customList;
+      const shuffledKanji = shuffleArray(KANJI_DATA);
+      const shuffledWords = shuffleArray(WORD_POOL);
+      const list = [];
+
+      for (let i = 0; i < examConfig.count; i++) {
+        const qKind = examConfig.type === 'mixed'
+          ? (i % 2 === 0 ? 'kanji' : 'word')
+          : examConfig.type;
+
+        if (qKind === 'kanji') {
+          const k = shuffledKanji[i % shuffledKanji.length];
+          list.push({
+            kind: 'kanji',
+            answerText: k.kanji,
+            meaning: k.meaning,
+            hintText: `음독: ${k.on} / 훈독: ${k.kun}`,
+            speech: k.speech,
+            detailObj: k
+          });
+        } else {
+          const w = shuffledWords[i % shuffledWords.length];
+          list.push({
+            kind: 'word',
+            answerText: w.word,
+            meaning: w.meaning,
+            hintText: `읽기(후리가나): ${w.reading}`,
+            speech: w.reading,
+            detailObj: w
+          });
+        }
+      }
+      return shuffleArray(list);
+    }
+
+    function startWritingExam(customRetryList = null) {
+      examQuestions = buildExamQuestions(customRetryList);
+      currentExamIdx = 0;
+      examResults = [];
+
+      document.getElementById('examSetupPanel').classList.add('hidden');
+      document.getElementById('examResultPanel').classList.add('hidden');
+      document.getElementById('examPlayPanel').classList.remove('hidden');
+
+      renderExamQuestion();
+    }
+
+    function renderExamQuestion() {
+      examGraded = false;
+      examStrokeOrderStack = [];
+      const q = examQuestions[currentExamIdx];
+      const total = examQuestions.length;
+
+      const correctSoFar = examResults.filter(r => r.isCorrect).length;
+      document.getElementById('examStepText').textContent = `문항 ${currentExamIdx + 1} / ${total}`;
+      document.getElementById('examTypeBadge').textContent = q.kind === 'kanji' ? '단일 한자 쓰기' : `한자 단어 쓰기 (${[...q.answerText].length}글자)`;
+      document.getElementById('examCorrectCountText').textContent = correctSoFar;
+      document.getElementById('examProgressBar').style.width = `${((currentExamIdx + 1) / total) * 100}%`;
+
+      document.getElementById('examPromptLabel').textContent = q.kind === 'kanji'
+        ? '다음 뜻에 해당하는 한자를 빈 칸에 직접 쓰세요'
+        : `다음 단어 뜻에 해당하는 일본어(${[...q.answerText].length}글자)를 빈 칸에 직접 쓰세요`;
+      document.getElementById('examPromptMeaning').textContent = q.meaning;
+
+      const hintBtn = document.getElementById('examHintToggleBtn');
+      const hintContent = document.getElementById('examHintContent');
+      hintBtn.classList.remove('hidden');
+      hintContent.classList.add('hidden');
+      hintContent.textContent = q.hintText;
+
+      document.getElementById('examDrawingControls').classList.remove('hidden');
+      document.getElementById('examGradeResultBox').classList.add('hidden');
+
+      examCanvasBoxes = createMultiCanvasBoard({
+        containerId: 'examCanvasBoard',
+        chars: [...q.answerText],
+        showGuide: false,
+        interactive: true,
+        strokeStackRef: examStrokeOrderStack
+      });
+    }
+
+    function revealExamHint() {
+      document.getElementById('examHintToggleBtn').classList.add('hidden');
+      document.getElementById('examHintContent').classList.remove('hidden');
+      speakCurrentExamAnswer();
+    }
+
+    function speakCurrentExamAnswer() {
+      const q = examQuestions[currentExamIdx];
+      if (q) speakJapanese(q.speech);
+    }
+
+    function undoLastExamStroke() {
+      if (examGraded) return;
+      while (examStrokeOrderStack.length > 0) {
+        const lastBoxIdx = examStrokeOrderStack.pop();
+        const box = examCanvasBoxes[lastBoxIdx];
+        if (box && box.strokes.length > 0) {
+          box.strokes.pop();
+          redrawSingleBox(box);
+          break;
+        }
+      }
+    }
+
+    function clearAllExamCanvases() {
+      if (examGraded) return;
+      examStrokeOrderStack = [];
+      examCanvasBoxes.forEach(box => {
+        box.strokes = [];
+        redrawSingleBox(box);
+      });
+    }
+
+    // -------------------------------------------------------------------------
+    // [고정밀 손글씨 자동 채점 알고리즘 v2.0]
+    // 1) 획수 하한/상한 하드 필터링 (전혀 다른 획수의 글자 즉시 감점/차단)
+    // 2) 3x3 Zoning 잉크 분포 벡터 코사인 유사도 (글자의 상하좌우 구조 비교)
+    // 3) 얇은 허용 반경(2px) 기반 양방향 F1 형태 매칭 + 낙서(과잉 잉크) 감점
+    // -------------------------------------------------------------------------
+    function evaluateHandwritingBox(box) {
+      const targetChar = box.char;
+      const expectedStrokes = estimateCharStrokes(targetChar);
+      const userStrokeCount = box.strokes.length;
+
+      if (userStrokeCount === 0) {
+        return {
+          score: 0, precision: 0, recall: 0, zoneSim: 0, strokeScore: 0,
+          userStrokes: 0, expectedStrokes, reason: '입력된 획이 없습니다.'
+        };
+      }
+
+      const GRID = 64;
+      const RAW = 128;
+
+      // 1) 사용자 필기 렌더링 (정답 폰트와 비슷한 얇은 굵기 5.5px로 렌더링하여 뭉개짐 방지)
+      const userRawCvs = document.createElement('canvas');
+      userRawCvs.width = RAW;
+      userRawCvs.height = RAW;
+      const uCtx = userRawCvs.getContext('2d');
+
+      const rect = box.cell.getBoundingClientRect();
+      const scaleX = RAW / (rect.width || 200);
+      const scaleY = RAW / (rect.height || 200);
+
+      uCtx.strokeStyle = '#000000';
+      uCtx.fillStyle = '#000000';
+      uCtx.lineWidth = 5.5;
+      uCtx.lineCap = 'round';
+      uCtx.lineJoin = 'round';
+
+      let totalStrokeLength = 0;
+      box.strokes.forEach(st => {
+        if (st.points.length === 1) {
+          uCtx.beginPath();
+          uCtx.arc(st.points[0].x * scaleX, st.points[0].y * scaleY, 2.8, 0, Math.PI * 2);
+          uCtx.fill();
+          totalStrokeLength += 2;
+        } else {
+          for (let i = 1; i < st.points.length; i++) {
+            const dx = (st.points[i].x - st.points[i - 1].x) * scaleX;
+            const dy = (st.points[i].y - st.points[i - 1].y) * scaleY;
+            totalStrokeLength += Math.hypot(dx, dy);
+            uCtx.beginPath();
+            uCtx.moveTo(st.points[i - 1].x * scaleX, st.points[i - 1].y * scaleY);
+            uCtx.lineTo(st.points[i].x * scaleX, st.points[i].y * scaleY);
+            uCtx.stroke();
+          }
+        }
+      });
+
+      // 2) 정답 문자 렌더링
+      const refRawCvs = document.createElement('canvas');
+      refRawCvs.width = RAW;
+      refRawCvs.height = RAW;
+      const rCtx = refRawCvs.getContext('2d');
+      rCtx.fillStyle = '#000000';
+      rCtx.font = 'bold 96px "Noto Sans JP", sans-serif';
+      rCtx.textAlign = 'center';
+      rCtx.textBaseline = 'middle';
+      rCtx.fillText(targetChar, RAW / 2, RAW / 2 + 4);
+
+      // 바운딩 박스 추출 및 정규화
+      function extractNormalized(srcCanvas) {
+        const sCtx = srcCanvas.getContext('2d');
+        const imgData = sCtx.getImageData(0, 0, RAW, RAW).data;
+        let minX = RAW, minY = RAW, maxX = 0, maxY = 0, hasPixel = false;
+
+        for (let y = 0; y < RAW; y++) {
+          for (let x = 0; x < RAW; x++) {
+            if (imgData[(y * RAW + x) * 4 + 3] > 50) {
+              hasPixel = true;
+              if (x < minX) minX = x;
+              if (x > maxX) maxX = x;
+              if (y < minY) minY = y;
+              if (y > maxY) maxY = y;
+            }
+          }
+        }
+
+        const binary = new Uint8Array(GRID * GRID);
+        if (!hasPixel) return { binary, aspect: 1, inkCount: 0 };
+
+        const bw = Math.max(6, maxX - minX + 1);
+        const bh = Math.max(6, maxY - minY + 1);
+        const aspect = bw / bh;
+
+        const normCvs = document.createElement('canvas');
+        normCvs.width = GRID;
+        normCvs.height = GRID;
+        const nCtx = normCvs.getContext('2d');
+
+        const maxDim = Math.max(bw, bh);
+        const pad = 6;
+        const targetSpan = GRID - pad * 2;
+        const ratio = targetSpan / maxDim;
+
+        const drawW = bw * ratio;
+        const drawH = bh * ratio;
+        const offsetX = (GRID - drawW) / 2;
+        const offsetY = (GRID - drawH) / 2;
+
+        nCtx.drawImage(srcCanvas, minX, minY, bw, bh, offsetX, offsetY, drawW, drawH);
+
+        const normData = nCtx.getImageData(0, 0, GRID, GRID).data;
+        let inkCount = 0;
+        for (let i = 0; i < GRID * GRID; i++) {
+          if (normData[i * 4 + 3] > 45) {
+            binary[i] = 1;
+            inkCount++;
+          }
+        }
+        return { binary, aspect, inkCount };
+      }
+
+      const userNorm = extractNormalized(userRawCvs);
+      const refNorm = extractNormalized(refRawCvs);
+
+      // 3) 하드 검증 1: 점만 찍었거나 캔버스를 무작위로 시커멓게 칠한 낙서 차단
+      const inkDensity = userNorm.inkCount / (GRID * GRID);
+      if (totalStrokeLength < 14 || userNorm.inkCount < 25) {
+        return {
+          score: 5, precision: 0, recall: 0, zoneSim: 0, strokeScore: 0,
+          userStrokes: userStrokeCount, expectedStrokes, reason: '글씨가 너무 작거나 점만 찍혔습니다.'
+        };
+      }
+      if (inkDensity > 0.56) {
+        return {
+          score: 12, precision: 10, recall: 10, zoneSim: 10, strokeScore: 0,
+          userStrokes: userStrokeCount, expectedStrokes, reason: '획이 지나치게 겹치거나 낙서 형태로 인식되었습니다.'
+        };
+      }
+
+      // 4) 하드 검증 2: 획수 차이 엄격 검사
+      // 예: 1획짜리 '一'에 8획을 쓰거나, 10획짜리 '時'에 1~2획만 쓴 경우 즉시 감점
+      const minAllowedStrokes = expectedStrokes <= 2 ? 1 : Math.ceil(expectedStrokes * 0.55);
+      const maxAllowedStrokes = expectedStrokes <= 2 ? expectedStrokes + 2 : Math.floor(expectedStrokes * 1.55) + 1;
+      const strokeOutOfRange = (userStrokeCount < minAllowedStrokes || userStrokeCount > maxAllowedStrokes);
+
+      const strokeDiff = Math.abs(userStrokeCount - expectedStrokes);
+      let strokeScore = Math.max(0, 1 - (strokeDiff / Math.max(3, expectedStrokes * 0.9)));
+      if (strokeOutOfRange) strokeScore *= 0.35;
+
+      // 5) 3x3 구역(Zoning) 구조 코사인 유사도 계산
+      // 글자를 9등분(좌상, 상, 우상, 좌, 중앙, 우, 좌하, 하, 우하)하여 획 분포 패턴 비교
+      function getZoneVector(binary) {
+        const vec = new Float32Array(9);
+        const cellSize = GRID / 3;
+        for (let y = 0; y < GRID; y++) {
+          const zy = Math.min(2, Math.floor(y / cellSize));
+          for (let x = 0; x < GRID; x++) {
+            if (binary[y * GRID + x] === 1) {
+              const zx = Math.min(2, Math.floor(x / cellSize));
+              vec[zy * 3 + zx] += 1;
+            }
+          }
+        }
+        return vec;
+      }
+
+      const uVec = getZoneVector(userNorm.binary);
+      const rVec = getZoneVector(refNorm.binary);
+      let dot = 0, normU = 0, normR = 0;
+      for (let i = 0; i < 9; i++) {
+        dot += uVec[i] * rVec[i];
+        normU += uVec[i] * uVec[i];
+        normR += rVec[i] * rVec[i];
+      }
+      const zoneSim = (normU > 0 && normR > 0) ? (dot / (Math.sqrt(normU) * Math.sqrt(normR))) : 0;
+
+      // 6) 좁은 허용 오차(반지름 2.5px) 기반 정밀 F1 매칭 (기존 4px에서 대폭 축소하여 오탐 차단!)
+      function dilateStrict(mask, radius) {
+        const out = new Uint8Array(GRID * GRID);
+        const rSq = radius * radius;
+        const rCeil = Math.ceil(radius);
+        for (let y = 0; y < GRID; y++) {
+          for (let x = 0; x < GRID; x++) {
+            if (mask[y * GRID + x] === 1) {
+              for (let dy = -rCeil; dy <= rCeil; dy++) {
+                for (let dx = -rCeil; dx <= rCeil; dx++) {
+                  if (dx * dx + dy * dy <= rSq) {
+                    const ny = y + dy;
+                    const nx = x + dx;
+                    if (ny >= 0 && ny < GRID && nx >= 0 && nx < GRID) {
+                      out[ny * GRID + nx] = 1;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        return out;
+      }
+
+      const strictDilatedRef = dilateStrict(refNorm.binary, 2.4);
+      const strictDilatedUser = dilateStrict(userNorm.binary, 2.4);
+
+      let userTotal = 0, userMatched = 0;
+      let refTotal = 0, refCovered = 0;
+
+      for (let i = 0; i < GRID * GRID; i++) {
+        if (userNorm.binary[i] === 1) {
+          userTotal++;
+          if (strictDilatedRef[i] === 1) userMatched++;
+        }
+        if (refNorm.binary[i] === 1) {
+          refTotal++;
+          if (strictDilatedUser[i] === 1) refCovered++;
+        }
+      }
+
+      const precision = userTotal > 0 ? (userMatched / userTotal) : 0;
+      const recall = refTotal > 0 ? (refCovered / refTotal) : 0;
+      const f1Shape = (precision + recall) > 0 ? (2 * precision * recall) / (precision + recall) : 0;
+
+      // 7) 가로세로 비율(Aspect Ratio) 차이 페널티 (예: '一' 납작한 글자에 네모난 글자를 쓰면 감점)
+      const aspectRatioDiff = Math.max(userNorm.aspect, refNorm.aspect) / Math.max(0.2, Math.min(userNorm.aspect, refNorm.aspect));
+      const aspectPenalty = aspectRatioDiff > 2.2 ? 0.72 : (aspectRatioDiff > 1.6 ? 0.88 : 1.0);
+
+      // 8) 종합 점수 산출: 정밀 F1 형태 매칭(52%) + 9구역 구조 유사도(25%) + 획수 정확도(23%)
+      let weighted = (f1Shape * 0.52 + zoneSim * 0.25 + strokeScore * 0.23) * aspectPenalty * 100;
+
+      // 획수가 허용 범위를 크게 벗어나거나 정밀도가 38% 미만이면 55점 상한선 적용 (오답 처리)
+      if (strokeOutOfRange || precision < 0.38 || recall < 0.38) {
+        weighted = Math.min(weighted, 54);
+      }
+
+      const finalScore = Math.min(100, Math.round(weighted));
+
+      let reason = '획의 위치와 구조가 정답과 잘 일치합니다.';
+      if (strokeOutOfRange) {
+        reason = userStrokeCount < minAllowedStrokes
+          ? `획수가 너무 부족합니다 (${userStrokeCount}획 입력 / 기준 ${expectedStrokes}획).`
+          : `획수가 너무 많습니다 (${userStrokeCount}획 입력 / 기준 ${expectedStrokes}획).`;
+      } else if (precision < 0.45) {
+        reason = '정답 글자의 획 위치에서 벗어난 선이 많습니다.';
+      } else if (recall < 0.45) {
+        reason = '정답 글자의 일부 부수나 획이 빠졌습니다.';
+      }
+
+      return {
+        score: finalScore,
+        precision: Math.round(precision * 100),
+        recall: Math.round(recall * 100),
+        zoneSim: Math.round(zoneSim * 100),
+        strokeScore: Math.round(strokeScore * 100),
+        userStrokes: userStrokeCount,
+        expectedStrokes,
+        reason
+      };
+    }
+
+    function gradeCurrentExamQuestion() {
+      if (examGraded) return;
+
+      const hasEmptyBox = examCanvasBoxes.some(b => b.strokes.length === 0);
+      if (hasEmptyBox) {
+        showToast('🌸 모든 칸에 글자를 작성한 뒤 채점해 주세요!');
+        return;
+      }
+
+      examGraded = true;
+      const q = examQuestions[currentExamIdx];
+      speakJapanese(q.speech);
+
+      const evaluations = examCanvasBoxes.map(box => evaluateHandwritingBox(box));
+      const avgScore = Math.round(evaluations.reduce((acc, e) => acc + e.score, 0) / evaluations.length);
+      const minBoxScore = Math.min(...evaluations.map(e => e.score));
+      const avgPrecision = Math.round(evaluations.reduce((acc, e) => acc + e.precision, 0) / evaluations.length);
+      const avgRecall = Math.round(evaluations.reduce((acc, e) => acc + e.recall, 0) / evaluations.length);
+      const avgZone = Math.round(evaluations.reduce((acc, e) => acc + e.zoneSim, 0) / evaluations.length);
+      const totalUserStrokes = evaluations.reduce((acc, e) => acc + e.userStrokes, 0);
+      const totalExpectedStrokes = evaluations.reduce((acc, e) => acc + e.expectedStrokes, 0);
+
+      // 엄격 합격 커트라인: 평균 62점 이상 AND 모든 글자 칸이 최소 52점 이상이어야 정답 인정!
+      const isCorrect = (avgScore >= 62 && minBoxScore >= 52);
+
+      // 가장 점수가 낮은 칸의 피드백 사유 추출
+      const worstEval = evaluations.reduce((prev, curr) => curr.score < prev.score ? curr : prev, evaluations[0]);
+
+      examCanvasBoxes.forEach((box, i) => {
+        box.interactive = false;
+        const boxPass = evaluations[i].score >= 58;
+        box.overlayDiv.classList.remove('hidden');
+        box.overlayDiv.classList.add('flex');
+        box.overlayDiv.style.color = boxPass ? 'rgba(16, 185, 129, 0.36)' : 'rgba(244, 63, 94, 0.40)';
+        box.cell.classList.remove('border-pink-300');
+        box.cell.classList.add(boxPass ? 'border-emerald-400' : 'border-rose-400');
+      });
+
+      examResults.push({
+        question: q,
+        isCorrect,
+        similarity: avgScore,
+        precision: avgPrecision,
+        recall: avgRecall,
+        zoneSim: avgZone,
+        userStrokes: totalUserStrokes,
+        expectedStrokes: totalExpectedStrokes,
+        reason: worstEval.reason
+      });
+
+      renderExamGradeBox();
+    }
+
+    function renderExamGradeBox() {
+      const latest = examResults[examResults.length - 1];
+      const q = latest.question;
+
+      document.getElementById('examDrawingControls').classList.add('hidden');
+      const resultBox = document.getElementById('examGradeResultBox');
+      const badge = document.getElementById('examGradeBadge');
+      const simScore = document.getElementById('examSimilarityScore');
+      const ansInfo = document.getElementById('examGradeAnswerInfo');
+      const breakdown = document.getElementById('examGradeBreakdown');
+      const overrideBtn = document.getElementById('examOverrideBtn');
+
+      document.getElementById('examCorrectCountText').textContent = examResults.filter(r => r.isCorrect).length;
+
+      if (latest.isCorrect) {
+        resultBox.className = 'rounded-3xl p-5 border-2 border-emerald-300 bg-emerald-50/90 animate-pop space-y-2.5';
+        badge.className = 'px-3.5 py-1 rounded-full text-xs font-extrabold bg-emerald-500 text-white';
+        badge.textContent = '⭕ 자동 채점: 정답!';
+        overrideBtn.textContent = '오답으로 판정 수정';
+      } else {
+        resultBox.className = 'rounded-3xl p-5 border-2 border-rose-300 bg-rose-50/90 animate-pop space-y-2.5';
+        badge.className = 'px-3.5 py-1 rounded-full text-xs font-extrabold bg-rose-500 text-white';
+        badge.textContent = '❌ 자동 채점: 오답';
+        overrideBtn.textContent = '정답으로 인정하기';
+      }
+
+      simScore.textContent = `종합 일치율: ${latest.similarity}% (커트라인 62%)`;
+      ansInfo.innerHTML = `정답 표기: <span class="kanji-font text-xl font-black text-pink-600">${q.answerText}</span> <span class="text-xs font-bold text-pink-800/80">(${q.hintText})</span>`;
+      breakdown.innerHTML = `
+        <strong>판정 분석:</strong> ${latest.reason}<br/>
+        <span class="text-[11px] text-pink-700/80">위치 정밀도 ${latest.precision}% · 획 채움도 ${latest.recall}% · 9구역 구조 ${latest.zoneSim}% · 획수 ${latest.userStrokes}/${latest.expectedStrokes}획</span>
+      `;
+
+      resultBox.classList.remove('hidden');
+    }
+
+    function toggleManualOverrideGrade() {
+      if (examResults.length === 0) return;
+      const latest = examResults[examResults.length - 1];
+      latest.isCorrect = !latest.isCorrect;
+      renderExamGradeBox();
+      showToast(latest.isCorrect ? '💖 정답으로 판정이 수정되었어요!' : '💦 오답으로 판정이 수정되었어요.');
+    }
+
+    function nextExamQuestion() {
+      currentExamIdx += 1;
+      if (currentExamIdx < examQuestions.length) {
+        renderExamQuestion();
+      } else {
+        showExamFinalResults();
+      }
+    }
+
+    function resetExamToSetup() {
+      document.getElementById('examPlayPanel').classList.add('hidden');
+      document.getElementById('examResultPanel').classList.add('hidden');
+      document.getElementById('examSetupPanel').classList.remove('hidden');
+    }
+
+    function showExamFinalResults() {
+      document.getElementById('examPlayPanel').classList.add('hidden');
+      document.getElementById('examResultPanel').classList.remove('hidden');
+
+      const total = examResults.length;
+      const correctCount = examResults.filter(r => r.isCorrect).length;
+      const score = Math.round((correctCount / total) * 100);
+      const avgSim = Math.round(examResults.reduce((s, r) => s + r.similarity, 0) / total);
+
+      document.getElementById('examFinalScoreTitle').textContent = `${score}점 (${correctCount} / ${total} 정답)`;
+      document.getElementById('examAvgAccuracyText').textContent = `평균 손글씨 정밀 일치율: ${avgSim}%`;
+
+      let comment = '틀린 한자와 단어를 쓰기 연습장에서 한 번 더 써보며 익혀보세요 🌸';
+      if (score === 100) comment = '대단합니다! 모든 한자·단어 받아쓰기를 완벽하게 해냈습니다! 🏆';
+      else if (score >= 80) comment = '훌륭한 필기 실력이에요! N5 한자를 정확히 기억하고 있습니다. 👏';
+      document.getElementById('examFinalComment').textContent = comment;
+
+      const wrongItems = examResults.filter(r => !r.isCorrect);
+      const wrongSection = document.getElementById('examWrongSection');
+      const wrongList = document.getElementById('examWrongList');
+      const wrongBadge = document.getElementById('examWrongCountBadge');
+
+      if (wrongItems.length === 0) {
+        wrongSection.classList.add('hidden');
+      } else {
+        wrongSection.classList.remove('hidden');
+        wrongBadge.textContent = `${wrongItems.length}문항`;
+        wrongList.innerHTML = wrongItems.map(res => {
+          const q = res.question;
+          return `
+            <div class="flex items-center justify-between p-3.5 bg-rose-50/70 rounded-2xl border border-rose-200">
+              <div class="flex items-center gap-3.5">
+                <div class="px-3 h-12 rounded-2xl bg-white border border-rose-200 flex items-center justify-center kanji-font text-2xl font-black text-pink-950 shrink-0">
+                  ${q.answerText}
+                </div>
+                <div>
+                  <div class="text-sm font-extrabold text-pink-950">${q.meaning}</div>
+                  <div class="kanji-font text-xs text-pink-800/80">${q.hintText}</div>
+                  <div class="text-[11px] text-rose-600 font-bold mt-0.5">일치율 ${res.similarity}% · ${res.reason}</div>
+                </div>
+              </div>
+              <button onclick="speakJapanese('${q.speech}')" class="p-2.5 bg-white hover:bg-pink-50 text-pink-500 rounded-full border border-pink-200" title="발음 듣기">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+              </button>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    function retryWrongExamQuestions() {
+      const wrongQs = examResults.filter(r => !r.isCorrect).map(r => r.question);
+      if (wrongQs.length === 0) return;
+      startWritingExam(wrongQs);
+    }
+
+    // =========================================================================
+    // 10. 초기 실행
+    // =========================================================================
+    window.addEventListener('DOMContentLoaded', () => {
+      updateProgressUI();
+      renderKanjiGrid();
+
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.getVoices();
+      }
+    });
+  </script>
+</body>
+</html>
