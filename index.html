@@ -180,6 +180,29 @@
     </div>
   </header>
 
+  <!-- 내 음악 플레이어: 선택한 파일은 이 기기에서만 재생됩니다. -->
+  <section class="w-full max-w-6xl mx-auto px-4 sm:px-6 pt-4">
+    <div class="cute-card p-4 sm:p-5">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div class="min-w-0">
+          <h2 class="cute-title text-lg text-pink-950">내 음악 재생</h2>
+          <p id="musicStatus" class="text-xs text-pink-700/75 mt-1">기기에서 음악 파일을 골라 재생해 보세요.</p>
+        </div>
+        <label for="musicFileInput" class="cute-pill-btn inline-flex items-center justify-center px-4 py-2.5 bg-pink-500 hover:bg-pink-600 text-white text-sm font-extrabold shadow-md shadow-pink-200 cursor-pointer">
+          음악 파일 고르기
+        </label>
+        <input id="musicFileInput" type="file" accept="audio/*,.mp3,.m4a,.wav,.ogg,.aac,.flac" multiple class="hidden" />
+      </div>
+      <div class="mt-3 flex flex-col gap-2">
+        <select id="musicTrackSelect" class="w-full min-w-0 rounded-xl border border-pink-200 bg-pink-50 px-3 py-2 text-sm text-pink-950 disabled:opacity-50" disabled>
+          <option>선택한 음악이 여기에 표시돼요</option>
+        </select>
+        <audio id="musicAudio" class="w-full" controls preload="metadata"></audio>
+      </div>
+      <p class="text-[11px] text-pink-600/75 mt-2">선택한 파일은 사이트에 업로드되지 않고, 현재 기기에서만 재생돼요. 페이지를 새로고침하면 다시 골라야 해요.</p>
+    </div>
+  </section>
+
   <!-- 메인 콘텐츠 컨테이너 -->
   <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6">
 
@@ -3043,6 +3066,71 @@
     }
 
     // =========================================================================
+    // =========================================================================
+    // 내 음악 플레이어
+    // =========================================================================
+    const musicFileInput = document.getElementById('musicFileInput');
+    const musicTrackSelect = document.getElementById('musicTrackSelect');
+    const musicAudio = document.getElementById('musicAudio');
+    const musicStatus = document.getElementById('musicStatus');
+    let selectedMusicFiles = [];
+    let selectedMusicUrls = [];
+
+    function playSelectedMusic(index, shouldPlay = true) {
+      if (!selectedMusicFiles.length || index < 0 || index >= selectedMusicFiles.length) return;
+      musicTrackSelect.value = String(index);
+      musicAudio.src = selectedMusicUrls[index];
+      musicStatus.textContent = selectedMusicFiles[index].name;
+      if (shouldPlay) {
+        musicAudio.play().catch(() => {
+          musicStatus.textContent = '재생 버튼을 눌러 음악을 시작해 주세요.';
+        });
+      }
+    }
+
+    if (musicFileInput && musicTrackSelect && musicAudio) {
+      musicFileInput.addEventListener('change', () => {
+        selectedMusicUrls.forEach(url => URL.revokeObjectURL(url));
+        selectedMusicFiles = Array.from(musicFileInput.files || []).filter(file =>
+          file.type.startsWith('audio/') || /\.(mp3|m4a|wav|ogg|aac|flac)$/i.test(file.name)
+        );
+        selectedMusicUrls = selectedMusicFiles.map(file => URL.createObjectURL(file));
+
+        musicTrackSelect.innerHTML = '';
+        if (!selectedMusicFiles.length) {
+          musicTrackSelect.disabled = true;
+          musicStatus.textContent = '선택된 음악 파일이 없어요. MP3 등의 오디오 파일을 골라 주세요.';
+          musicAudio.pause();
+          musicAudio.removeAttribute('src');
+          musicAudio.load();
+          return;
+        }
+
+        selectedMusicFiles.forEach((file, index) => {
+          const option = document.createElement('option');
+          option.value = String(index);
+          option.textContent = file.name;
+          musicTrackSelect.appendChild(option);
+        });
+        musicTrackSelect.disabled = false;
+        playSelectedMusic(0);
+      });
+
+      musicTrackSelect.addEventListener('change', () => {
+        playSelectedMusic(Number(musicTrackSelect.value));
+      });
+
+      musicAudio.addEventListener('ended', () => {
+        if (!selectedMusicFiles.length) return;
+        const nextIndex = (Number(musicTrackSelect.value) + 1) % selectedMusicFiles.length;
+        playSelectedMusic(nextIndex);
+      });
+
+      window.addEventListener('beforeunload', () => {
+        selectedMusicUrls.forEach(url => URL.revokeObjectURL(url));
+      });
+    }
+
     // 10. 초기 실행
     // =========================================================================
     window.addEventListener('DOMContentLoaded', () => {
